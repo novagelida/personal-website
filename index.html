@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<!-- TODO: [ REFACTORING ] [ INITIAL_CONFIG ] L'attributo verrà settato dalla confgurazione iniziale -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- TODO: [ REFACTORING ] [ INITIAL_CONFIG ] L'attributo verrà settato dalla confgurazione iniziale -->
+    <meta name="description" content="Hello, I'm Rosario Crisci and this is my personal website. I'm a game developer, technical artist, VR enthusiast. I'm passionate about videogames, music and photography.">
+	<!-- TODO: [ REFACTORING ] [ INITIAL_CONFIG ] L'attributo verrà settato dalla confgurazione iniziale -->
+    <meta name="author" content="Rosario Crisci">
+	<!-- TODO: [ REFACTORING ] [ INITIAL_CONFIG ] L'attributo verrà settato dalla confgurazione iniziale (brandName?) -->
+    <title>Rosario Crisci</title>
+
+    <!-- TODO: [ REFACTORING ] [ BUILD PROCESS ] replace "local" whit the production code folder -->
+    <script type="text/javascript" src="built/local/MyApplicationCore.js"></script>
+    <script type="text/javascript">
+        ApplicationCore.Run();
+    </script>
+
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/myStyle.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <!-- font personalizzato: Poiret One-->
+    <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    <!-- altri font del tema-->
+    <link href="font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Cookies banner -->
+    <script src="js/cookie-banner.js"></script>
+</head>
+
+<body id="page-top" class="index">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top">Rosario Crisci</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about">About</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="img/profile.png" alt="">
+                    <div class="intro-text">
+                        <span class="name">Rosario Crisci</span>
+                        <hr class="star-light">
+                        <span class="skills">Technical Artist - Creative Developer - Musician</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Portfolio</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 portfolio-item">
+                    <p class="portfolio-captation">Doctor Quarto!</p>
+                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/docQuarto.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-3 portfolio-item">
+                    <p class="portfolio-captation">Prolog treasure finder</p> 
+                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/progProlog.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-3 portfolio-item">
+                    <p class="portfolio-captation">Orienteering application</p>
+                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/progAVII.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-3 portfolio-item">
+                    <p class="portfolio-captation">Colorful Island</p>
+                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/progPGTR.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-3 portfolio-item">
+                    <p class="portfolio-captation">Local Painter</p>
+                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/tesi.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-3 portfolio-item">
+                    <p class="portfolio-captation">Nivram League Warrior</p>
+                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/LogoNLW.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-3 portfolio-item">
+                    <p class="portfolio-captation">Trip eMotion</p>
+                    <a href="#portfolioModal7" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/tripEmotion.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-3 portfolio-item">
+                    <p class="portfolio-captation">Lost In Fear</p>
+                    <a href="#portfolioModal8" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/liftg.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="ggjBanner portfolio-item">
+                    <a href="#ggj15" class="portfolio-link" data-toggle="modal" style="max-width: 885px;">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/ggj2015.png" class="img-responsive" alt="I partecipated in Global Game Jam 2015 @UWE Bristol">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="success" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>About</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <p>Hello! I'm Rosario: a curious guy passionate about art, science and videogames. Since I was a child, creativity and passion for games were my key features. <br><br>
+                    John Frusciante and Blizzard games are those things that most influenced my life: Frusciante brought me into music just like Warcraft led me into gaming.</p>
+                </div>
+                <div class="col-lg-4">
+                    <p>Thanks to my university experiences in Catania and in Milan I gained skills as software design, algorithm, AI, computer graphics, game programming and design: I found a way to make my passions professionally productive!<br><br>
+
+                    Now I'm looking for an opportunity that allow me to express my creativitiy, continue learning and cooperate in a well organized team.</p>
+                </div>
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="text-center highlight">
+                    <p>Music and software development have something in common: in order to create good music or good software you need passion and outstanding partners.<br>I strongly believe in team work!</p>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <a href="#curriculumVitae" class="btn btn-lg btn-outline" data-toggle="modal">
+                        <i class="fa fa-newspaper-o"></i> Look at my CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Contact Me</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <form name="sentMessage" id="contactForm" novalidate>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Name</label>
+                                <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Email Address</label>
+                                <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Message</label>
+                                <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <button type="submit" class="btn btn-success btn-lg">Send</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3>Location</h3>
+                        <p>IP4 1NT<br>Ipswich<br>Suffolk</p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Around the Web</h3>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="http://it.linkedin.com/pub/rosario-crisci/97/175/a26" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a href="mailto:postmaster@rosariocrisci.com" target="_blank" class="btn-social btn-outline"><i class="fa fa-at fa-fw"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/novagelida" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="callto://novagelida" class="btn-social btn-outline"><i class="fa fa-fw fa-skype"></i></a>
+                            </li>
+                                                        <li>
+                                <a href="https://www.flickr.com/photos/21719676@N05/" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-flickr"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <!--<h3>Twitter Timeline</h3>-->
+                        <a class="twitter-timeline" href="https://twitter.com/novagelida" height="200" data-widget-id="513253530874830848">Tweets di @novagelida</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; www.rosariocrisci.com 2014
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll visible-xs visble-sm">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <h2>Doctor Quarto!</h2>
+                    <hr class="star-primary">
+                    <div class="col-lg-8">
+                        <div class="modal-body">
+                            <img src="img/portfolio/docQuarto.png" class="img-responsive img-centered" alt="Doctor Quarto!">
+                            <p><i>Doctor Quarto!</i> is a digital version of the Gigamic board game <a href="http://en.gigamic.com/game/quarto-classic" target="_blank">Quarto!</a>. <i>Doctor Quarto!</i> is a strategic game for two players, one of which could be <i>The Doctor</i>, an artificial intelligence based on AB Negamax algorithm.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                            <ul class="item-details">
+                                <li>Exam:
+                                    <strong><a href="http://mornaghiial.ariel.ctu.unimi.it/v3/home/Default.aspx">A.I. Lab.</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong>June 2013 - January 2014</strong>
+                                </li>
+                                <li>Team Size:
+                                    <strong>2</strong>
+                                </li>
+                                <li>My role:
+                                    <strong>AI, gameplay and UI programmer</strong>
+                                </li>
+                                <li>Techs:
+                                    <strong>C#, Unity3D</strong>
+                                </li>
+                            </ul>
+                            <div class="text-center highlight-red">
+                                <p>As soon as possible the game will be available for more platforms</p>
+                            </div>
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="https://bitbucket.org/novagelida/progetto-iavg-quarto/src" target="_blank" class="portfolio-btn"><i class="fa fa-fw fa-bitbucket"></i></a>
+                                </li>
+                                <li>
+                                    <a href="./downloadables/quartoAndroid.apk" class="portfolio-btn"><i class="fa fa-fw fa-android"></i></a>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <h2>Prolog treasure finder</h2>
+                    <hr class="star-primary">
+                    <div class="col-lg-8">
+                        <div class="modal-body">
+                            <img src="img/portfolio/progProlog.png" class="img-responsive img-centered" alt="">
+                            <p>Prolog based agent able to find one or more treasures inside a generic scenario without any a-priori knowledge. The scenario is composed by tiles and each of these tiles could represent different kind of terrain like mountain or river. The agent, using some heuristics and the A* algorithm, explore the map until he can see a treasure. When the agent is able to see a treasure (different tiles allow different seeing conditions) he makes a plan to cath it.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <ul class="item-details">
+                           <li>Exam:
+                                <strong><a href="http://mercurio.srv.di.unimi.it/~ornaghi/IntelligenzaArtificiale/aaprec/ai113.html" target="_blank">Artificial Intelligence</a>
+                                </strong>
+                            </li>
+                            <li>Date:
+                                <strong>January 2013 - April 2013
+                                </strong>
+                            </li>
+                            <li>Team Size:
+                                <strong>3</strong>
+                            </li>
+                            <li>My role:
+                                <strong>Code design and programming</strong>
+                            </li>
+                            <li>Techs:
+                                <strong>swi-prolog</strong>
+                            </li>
+                        </ul>
+                        <div>
+                            <a href="https://subversion.assembla.com/svn/progetto-ia/" target="_blank" class="portfolio-btn"><i class="fa fa-fw fa-bitbucket"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <h2>Orientation within a virtual environment</h2>
+                    <hr class="star-primary">
+                    <div class="col-lg-8">
+                        <div class="modal-body">
+                            <img src="img/portfolio/progAVII.png" class="img-responsive img-centered" alt="">
+                            <p>The goal of the project is to put the user into a urban virtual environment within which he has to follow a randomly generated path from point A to point B. The performance will be evaluated using metrics that serve to establish if the subject is able to orientate within the scenario. The application is designed to be used inside the <a href="http://homes.di.unimi.it/~gadia/avii/aa_1011/files/lezioni/00b_Intro_TeatroVirtuale.pdf" target="_blank">virtual theater</a> of the University of Milan. In order to immerse users in the virtual by letting them interact naturally with their body and to have the most vivid perceptual experience, the scene is presented using stereoscopy and the interactions are realized with MS Kinect.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <ul class="item-details">
+                                <li>Exam:
+                                    <strong><a href="http://gadia.di.unimi.it/avii/aa_1213/" target="_blank">Immersive and interactive virtual environment</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong>November 2012 - October 2013
+                                    </strong>
+                                </li>
+                                <li>Team Size:
+                                <strong>3</strong>
+                                </li>
+                                <li>My role:
+                                    <strong>Code design, UI programming, Businnes logic</strong>
+                                </li>
+                                <li>Techs:
+                                    <strong>python, panda3D, MS kinect, Vrpn, FAAST, OpenNI</strong>
+                                </li>
+                            </ul>
+                            <div>
+                                <a href="https://subversion.assembla.com/svn/progetto-avii/" target="_blank" class="portfolio-btn"><i class="fa fa-fw fa-bitbucket"></i></a>
+                            </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <h2>Colorful Island</h2>
+                    <hr class="star-primary">
+                    <div class="col-lg-8">
+                        <div class="modal-body">
+                            <img src="img/portfolio/progPGTR.png" class="img-responsive img-centered" alt="">
+                            <p>Colorful island is a 3D game for the web. The player has to collect three different brushes randomly placed on the scenario. The scene is rendered using a post processing effect that provide a painterly look. When collected, each brush allows a change at the look of the scene.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <ul class="item-details">
+                            <li>Exam:
+                                <strong><a href="http://homes.di.unimi.it/~gadia/pgtr/aa_1213/" target="_blank">Real-time graphics programming</a></strong>
+                            </li>
+                            <li>Date:
+                                <strong>November 2013 – January 2014</strong>
+                            </li>
+                            <li>Team Size:
+                                <strong>2</strong>
+                            </li>
+                            <li>My role:
+                                <strong>Code design, Graphic programming, Engine programming</strong>
+                            </li>
+                            <li>Techs:
+                                <strong>WebGL, GLSL, Three.js, Javascript, Blender</strong>
+                            </li>
+                        </ul>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="https://bitbucket.org/novagelida/progetto-pgtr/src" target="_blank" class="portfolio-btn"><i class="fa fa-fw fa-bitbucket"></i></a>
+                            </li>
+                            <li>
+                                <a href="./portfolio/ColorfulIsland/colorfulIsland.html" target="_blank" class="portfolio-btn"><i class="fa fa-fw fa-play"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <h2>Local Painter</h2>
+                    <hr class="star-primary">
+                    <div class="col-lg-8">
+                        <div class="modal-body">
+                            <img src="img/portfolio/tesi.png" class="img-responsive img-centered" alt="">
+                            <p>Local Painter is the object of my master's degree thesis and it is a non-photorealistic shader that gives a painterly look to the surfaces on which it is applied. I developed a web interface that shows how is possible to use this shading effect.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <ul class="item-details">
+                            <li>Exam:
+                                <strong>Master's degree thesis</strong>
+                                </li>
+                                <li>Date:
+                                    <strong>January 2014 – June 2014</strong>
+                                </li>
+                                <li>Team Size:
+                                <strong>Just me</strong>
+                                </li>
+                                <li>Techs:
+                                    <strong>WebGL, GLSL, Three.js, Javascript, Blender</strong>
+                                </li>
+                        </ul>
+                        <div class="text-center highlight-red">
+                            <p>I'm sorry windows users: due to technical constraints, Local Painter is not properly displayed in your browser</p>
+                            </div>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="https://bitbucket.org/novagelida/local-painter/src" target="_blank" class="portfolio-btn"><i class="fa fa-fw fa-bitbucket"></i></a>
+                            </li>
+                            <li>
+                                <a href="./portfolio/LocalPainter/localPainter.html" target="_blank" class="portfolio-btn"><i class="fa fa-fw fa-play"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <h2>Nivram League Warriors</h2>
+                    <hr class="star-primary">
+                    <div class="col-lg-8">
+                        <div class="modal-body">
+                            <img src="img/portfolio/LogoNLW.png" class="img-responsive img-centered" alt="">
+                            <p>Nivram League warrior is a concept of a Sci-Fi MMORPG based on robot fights. Me and my team developed prototypical client and server that allow two player to try one of the 1vs1 match mode.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <ul class="item-details">
+                           <li>Exam:
+                                <strong><a href="http://onlinegamedesign.ariel.ctu.unimi.it/v3/home/PreviewArea.aspx" target="_blank">Online game design</a></strong>
+                            </li>
+                            <li>Date:
+                                <strong>June 2012 – October 2012</strong>
+                            </li>
+                            <li>Team Size:
+                                <strong>7</strong>
+                            </li>
+                            <li>My role:
+                                <strong>Game Design, Front-end programming, Gameplay programming</strong>
+                            </li>
+                            <li>Techs:
+                                <strong>C#, Java, Unity3D, SmartFox Server</strong>
+                            </li>
+                        </ul>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="http://t3r-gamedev.wikidot.com/" target="_blank" class="portfolio-btn"><i class="fa fa-fw fa-file"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/watch?v=5AgeMyc-_L0" target="_blank" class="portfolio-btn"><i class="fa fa-fw fa-youtube-play"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal7" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <h2>Trip eMotion</h2>
+                    <hr class="star-primary">
+                    <div class="col-lg-8">
+                        <div class="modal-body">
+                            <img src="img/portfolio/tripEmotion.png" class="img-responsive img-centered" alt="">
+                            <p>I developed several components (avatar customization system, multiplayer and controls) for the serious game Trip eMotion. The game put the user inside a 3D version of a tourist attraction of historical relevance and lets the player explore it
+                            and play with a didactic graphic adventure setted inside this environment.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <ul class="list-inline item-details">
+                            <li>Project owner:
+                                <strong><a href="http://www.redraion.com" target="_blank">Red Raion</a></strong>
+                            </li>
+                            <li>Date:
+                                <strong>October 2014 – January 2015</strong>
+                            </li>
+                            <li>Team Size:
+                                <strong>5</strong>
+                            </li>
+                            <li>My role:
+                                <strong>Code design, Front-end programming, UI programming, Avatar customization, Controls</strong>
+                            </li>
+                            <li>Techs:
+                                <strong>C#, Photon Server, Unity3D, PUN (Unity Plugin), UMA (Unity Plugin), Android</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal8" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <h2>Lost in fear: the game</h2>
+                    <hr class="star-primary">
+                    <div class="col-lg-8">
+                        <div class="modal-body">
+                            <img src="img/portfolio/liftg.png" class="img-responsive img-centered" alt="">
+                            <p>Videogame for 4D cinemas made with Unity3D. The users has to kill, using proprietary light guns, as many
+                            zombies as possible surrounded by the 4D environment.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                    <ul class="list-inline item-details">
+                        <li>Project owner:
+                            <strong><a href="http://www.redraion.com" target="_blank">Red Raion</a>
+                            </strong>
+                        </li>
+                        <li>Date:
+                            <strong>October 2014 – November 2014
+                            </strong>
+                        </li>
+                        <li>Team Size:
+                                <strong>4</strong>
+                            </li>
+                            <li>My role:
+                                <strong>Code design, Game design, UI programming, Gameplay programming</strong>
+                            </li>
+                        <li>Techs:
+                            <strong>C#, Unity3D, Integration with proprietary hardware (light guns)</strong>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="portfolio-modal modal fade" id="cookiesPolicy" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+        <div class="container">
+            <div class="row">
+                <h2>Cookies Policy</h2>
+                <hr class="star-primary">
+                <div class="col-lg-10">
+                    <div class="text-left modal-body">
+                        <h1>What are cookies?</h1>
+                        <p>
+                            Cookies are small text files containing a string of characters that can be placed on your computer or mobile device that uniquely identify your browser or device. 
+                            <br>
+                            <br>
+                            Cookies allow a site or services to know if your computer or device has visited that site or service before. cookies can then be used to help understand how the site or service is being used, help you navigate between pages efficiently, help remember your preferences, and generally improve your browsing experience.
+                        </p>
+                        <h1>What type of cookies I use in my website?</h1>
+                        <p>
+                            This website use just two cookies.<br>The first one tells me if you have already read this policy so that I cannot annoy you, just for 7 days, with the ugly banner on top of my website.<br>The second one is a third party cooky. More precisely, is a cookie set by twitter. You can read the twitter's cookies policy <a href="https://support.twitter.com/articles/20170519" target="_blank">here</a>
+                        </p>
+                        <h1>How to control and delete cookies</h1>
+                        <p>
+                            If you want to delete cookies follow the instructions at http://www.wikihow.com/Clear-YourBrowser%27s-Cookies. If you wish to disable your browser from receiving cookies follow the instructions at http://www.wikihow.com/Disable-Cookies. You can find out more information cookie settings at thirdparty information sites, such as www.allaboutcookies.org.
+                        </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+    <div class="portfolio-modal modal fade" id="ggj15" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <h2>Dr Evil's Recruitment Drive</h2>
+                    <hr class="star-primary">
+                    <div class="col-lg-8">
+                        <div class="modal-body">
+                            <img src="img/portfolio/ggj15uwe.png" class="img-responsive img-centered" alt="">
+                            <p>At the end of January 2015 I took part in "global game jam"  at the University of West England, Bristol. Me and my team realized a 2D escape game according to the theme "what do we do now?".</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <ul class="list-inline item-details">
+                                <li>Date:
+                                    <strong>23-24-25 January 2015
+                                    </strong>
+                                </li>
+                                <li>Team Size:
+                                <strong>6</strong>
+                            </li>
+                            <li>My role:
+                                <strong>Game design, Gameplay programming</strong>
+                            </li>
+                                <li>Techs:
+                                    <strong>C#, Unity3D</strong>
+                                </li>
+                            </ul>
+                             <ul class="list-inline">
+                                <li>
+                                    <a href="http://globalgamejam.org/2015/games/dr-evils-recruitment-drive-0" target="_blank" class="portfolio-btn"><i class="fa fa-fw fa-link"></i></a>
+                                </li>
+                                <li>
+                                    <a href="http://globalgamejam.org/users/novagelida" target="_blank" class="portfolio-btn"><i class="fa fa-fw fa-user"></i></a>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="curriculumVitae" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="cv-modal modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                        <div class="col-md-8">
+                                <h2>Employment history</h2>
+                                <hr class="star-primary">
+                                <div class="text-left modal-body">
+                                    <h3>Derivco uk (Software Developer level 2)</h3><small>september 2015 – current</small>
+                                    <br>
+                                    <h3>Derivco uk (Junior Software Developer)</h3><small>march 2015 – september 2015</small><br><br>Derivco is a top-tier software house and gaming development company that's all about talented individuals and trends in the IT space.<br><br>
+                                    <b>Roles and responsibilities:</b><br>As a software engineer, my role is designing and implementing code for a mobile betting platform.<br><b>Technologies:</b><br>C#, Javascript, HTML5, CSS3, Script#, IIS.
+                                    <h3>RedRaion (Unity Developer, Technical Artist)</h3><small>october 2014 – january 2015</small><br><br>RedRaion makes 4D videos, interactive applications and videogames<br><br>
+                                    <b>Roles and responsibilities:</b><br>As unity developer I deal with gameplay programming and code designing. As technical artist i studied materials and VFX using UE4.<br><b>Technologies:</b><br>C#, Unity 3D, Unreal Engine.
+                                    <h3>ConsulenzaIT (VB6/.NET Developer)</h3><small>Dicember 2010 – April 2011</small><br><br>ConsulenzaIT is a company specialized in IT consultanting and IT services for public bodies.<br><br>
+                                    <b>Roles and responsibilities:</b><br>I realized a new version of a management software for the public institute "Case popolari".<br><b>Technologies:</b><br>VB6, .NET, Visual Studio, MS SQL Server, SQLite.
+                                </div>
+                                <h2>Education</h2>
+                                <hr class="star-primary">
+                                <div class="text-left modal-body">
+                                    <dl class="dl-horizontal">
+                                        <dt>2014</dt>
+                                        <dd>Master's degree in Computer science and Communication, University of Milan.<br><strong>Thesis:</strong><i> "Analysis and implementation of non-photorealistic rendering techniques inspired by the art of painting"</i>.<br>I took part at:<br><ul>
+                                            <li>
+                                                <a href="http://goo.gl/ikw7xt" target="_blank">New Game Designer 2012</a>
+                                            </li>
+                                            <li>
+                                                <a href="http://goo.gl/8ZjKV5" target="_blank">New Game Designer 2013</a>
+                                            </li>
+                                        </ul></dd>
+                                        <dt>2011</dt>
+                                        <dd>Bachelor's degree in Computer science, University ofCatania.<br><strong>Thesis:</strong><i> "FilterMCS: a new filtering based maximum common subgraph algorithm"</i>.<br>I took part at:<br><ul>
+                                            <li>
+                                                <a href="http://goo.gl/pfsYQM" target="_blank">Piazza Jazz 2010</a>
+                                            </li>
+                                            <li>
+                                                <a href="http://goo.gl/pfsYQM" target="_blank">Piazza Jazz 2009</a>
+                                            </li>
+                                        </ul></dd>
+                                        <dt>2007</dt>
+                                        <dd>Secondary High School degree,<br> Liceo Scientifico "Principe Umberto di Savoia", Catania.<br><br>I took part at <a href="http://www.astrofilicatanesi.org/" target="_blank">astrophiles group of Catania</a> (2006 - 2008)<br></dd>
+                                    </dl>
+                                    I started studying music when I was fourteen. I studied in schools such <a href="http://www.guitaracademy.it/chi-siamo/" target="_blank">Guitar Academy</a> or <a href="http://www.cesm.it/" target="_blank">Cesm</a> and i took part at some clinics like "L'improvvisazione e i suoi linguaggi" (<a href="http://www.marcopanascia.com/" target="_blank">Marco Panascia</a> 2009).<br>Passionate about home recording, I worked with Cubase frequently.
+                                </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <h2>Technical Skills</h2>
+                                <hr class="star-primary">
+                                <b>Programming Languages</b>
+                                <ul class="text-left cv-ul">
+                                    <li><strong>C#:</strong> Strong</li>
+                                    <li><strong>C++:</strong> Good</li>
+                                    <li><strong>GLSL:</strong> Good</li>
+                                    <li><strong>Java:</strong> Strong</li>
+                                    <li><strong>Python:</strong> Strong</li>
+                                    <li><strong>C:</strong> Average</li>
+                                    <li><strong>Javascript:</strong> Good</li>
+                                    <li><strong>PHP:</strong> Average</li>
+                                    <li><strong>Prolog:</strong> Good</li>
+                                    <li><strong>.Net:</strong> Good</li>
+                                </ul>
+                                <b>Web Development</b>
+                                <ul class="text-left cv-ul">
+                                    <li><strong>CSS3</strong></li>
+                                    <li><strong>HTML5</strong></li>
+                                    <li><strong>JQuery</strong> </li>
+                                    <li><strong>Bootstrap</strong> </li>
+                                </ul>
+                                <b>Agile Tools</b>
+                                <ul class="text-left cv-ul">
+                                    <li><strong>Jira</strong></li>
+                                    <li><strong>Confluence</strong></li>
+                                    <li><strong>Octopus</strong></li>
+                                    <li><strong>Wilfred</strong></li>
+                                </ul>
+                                <b>Platforms</b>
+                                <ul class="text-left cv-ul">
+                                    <li><strong>Linux:</strong> Strong</li>
+                                    <li><strong>Windows:</strong> Good</li>
+                                    <li><strong>Android:</strong> Average</li>
+                                </ul>
+                                <b>Database</b>
+                                <ul class="text-left cv-ul">
+                                    <li>Relational Databases</li>
+                                    <li>MMDB</li>
+                                    <li>SQL Language</li>
+                                </ul>
+                                <b>IDE</b>
+                                <ul class="text-left cv-ul">
+                                    <li>Eclipse</li>
+                                    <li>Visual Studio</li>
+                                    <li>Geany</li>
+                                    <li>Mono Develop</li>
+                                </ul>
+                                <b>3D Graphics</b>
+                                <ul class="text-left cv-ul">
+                                    <li><strong>Unity3D:</strong> Strong</li>
+                                    <li><strong>Three.js:</strong> Strong</li>
+                                    <li><strong>UE4:</strong> Starter</li>
+                                    <li><strong>Blender:</strong> Average</li>
+                                </ul>
+                            <h2>Language skills</h2>
+                                <hr class="star-primary">
+                                <div class="text-left modal-body">
+                                    <ul>
+                                        <li><strong>Italian:</strong>Native</li>
+                                        <li><strong>French:</strong>Elementary proficiency</li>
+                                        <li><strong>English:</strong>Professional working proficiency</li>
+                                    </ul>
+                                    <strong>Certification:</strong> Master in english language - level B2, British Institutes, Licence n. 5244/07.
+                                </div>
+                        </div>
+                </div>
+            </div>
+            <div class="cv-footer-above">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            I hereby authorize the use of my personal details solely for circulation within the company according to the Italian Legislative Decree n° 196/2003
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cv-footer-below">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                          If you wish to have a full cv in pdf format, please use the <a id="contact-from-cv" href="#contact">contact module</a> to request it. 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/rosarioCrisci.js"></script>
+
+</body>
+
+</html>

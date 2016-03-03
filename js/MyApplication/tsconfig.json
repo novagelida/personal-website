@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "system",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "out": "../../built/local/MyApplicationCore.js",
+        "sourceMap": true
+    },
+    "files": [
+        "ApplicationLoader.ts",
+        "Debug.ts"
+    ]
+}

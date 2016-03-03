@@ -1,0 +1,10 @@
+@media only screen and (min-width : 768px) {
+	.portfolio-modal .close-modal .lr {
+	    height: 15px;
+	    margin-left: 20px;
+	}
+	.cv-modal {
+	    padding: 25px 0 0 0 !important;
+	}
+}
+
