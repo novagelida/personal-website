@@ -21,10 +21,22 @@ var ApplicationCore;
 })(ApplicationCore || (ApplicationCore = {}));
 var ApplicationCore;
 (function (ApplicationCore) {
+    var InitialConfigurationModel = (function () {
+        function InitialConfigurationModel() {
+        }
+        return InitialConfigurationModel;
+    }());
+    ApplicationCore.InitialConfigurationModel = InitialConfigurationModel;
+})(ApplicationCore || (ApplicationCore = {}));
+var ApplicationCore;
+(function (ApplicationCore) {
     var MyDataRetriever = (function () {
         function MyDataRetriever() {
             ApplicationCore.Alert("DataRetriever Running");
         }
+        MyDataRetriever.prototype.GetInitialConfiguration = function () {
+            return new ApplicationCore.InitialConfigurationModel();
+        };
         return MyDataRetriever;
     }());
     ApplicationCore.MyDataRetriever = MyDataRetriever;

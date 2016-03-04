@@ -10,6 +10,7 @@
     "files": [
         "Debug.ts",
         "ThemeManager.ts",
+        "InitialConfigurationModel.ts",
         "DataRetriever.ts",
         "ApplicationLoader.ts"
     ]
