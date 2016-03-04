@@ -8,7 +8,9 @@
         "sourceMap": true
     },
     "files": [
-        "ApplicationLoader.ts",
-        "Debug.ts"
+        "Debug.ts",
+        "ThemeManager.ts",
+        "DataRetriever.ts",
+        "ApplicationLoader.ts"
     ]
 }
