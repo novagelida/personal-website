@@ -42,12 +42,11 @@ namespace ApplicationCore
 		Build() : void;
 	}
 
-	export class InitialConfigurationRetriever extends BasicDataRetriever implements ModelBuilder
+	export class InitialConfigurationBuilder extends BasicDataRetriever implements ModelBuilder
 	{
 		constructor(model : DataModel)
 		{
 			super(model);
-			Alert("InitialConfigurationRetriever built!");
 		}
 
 

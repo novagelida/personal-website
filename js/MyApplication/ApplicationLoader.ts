@@ -2,15 +2,20 @@ namespace ApplicationCore
 {
 	class Activator{
 		private themeManager : ThemeManager;
-		private dataRetriever: ModelBuilder;
 
-		constructor(themeManager: ThemeManager, dataRetriever: ModelBuilder) {
+		constructor(themeManager: ThemeManager) {
 			this.themeManager = themeManager;
-			this.dataRetriever = dataRetriever;
+		}
+
+		BuildInitialConfigurationModel(){
+			
+			var initialConfigurationBuilder  = new InitialConfigurationBuilder({});
+
+			initialConfigurationBuilder.Build();
 		}
 
 		Run(){
-			this.dataRetriever.Build();
+			this.BuildInitialConfigurationModel();
 		}
 	}
 
@@ -18,15 +23,10 @@ namespace ApplicationCore
 		var themeManager: ThemeManager; 
 		themeManager = new MyThemeManager();
 
-		var dataRetriever: ModelBuilder; 
-		dataRetriever = new InitialConfigurationRetriever({});
-
 		var activator : Activator; 
-		activator = new Activator(themeManager, dataRetriever);
+		activator = new Activator(themeManager);
 
 		activator.Run();
-		
-		Alert("ApplicationCore running!");
 	}
 	
 }

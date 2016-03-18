@@ -18,7 +18,6 @@ var ApplicationCore;
 (function (ApplicationCore) {
     var MyThemeManager = (function () {
         function MyThemeManager() {
-            ApplicationCore.Alert("ThemeManager Running");
         }
         return MyThemeManager;
     }());
@@ -55,41 +54,40 @@ var ApplicationCore;
         };
         return BasicDataRetriever;
     }());
-    var InitialConfigurationRetriever = (function (_super) {
-        __extends(InitialConfigurationRetriever, _super);
-        function InitialConfigurationRetriever(model) {
+    var InitialConfigurationBuilder = (function (_super) {
+        __extends(InitialConfigurationBuilder, _super);
+        function InitialConfigurationBuilder(model) {
             _super.call(this, model);
-            ApplicationCore.Alert("InitialConfigurationRetriever built!");
         }
-        InitialConfigurationRetriever.prototype.Build = function () {
-            var initialConfigurationRequest = { Resource: "./data/InitialConfiguration.json" };
+        InitialConfigurationBuilder.prototype.Build = function () {
+            var initialConfigurationRequest = { Resource: "http://localhost/data/InitialConfiguration.json" };
             return _super.prototype.PerformRequest.call(this, initialConfigurationRequest);
         };
-        return InitialConfigurationRetriever;
+        return InitialConfigurationBuilder;
     }(BasicDataRetriever));
-    ApplicationCore.InitialConfigurationRetriever = InitialConfigurationRetriever;
+    ApplicationCore.InitialConfigurationBuilder = InitialConfigurationBuilder;
 })(ApplicationCore || (ApplicationCore = {}));
 var ApplicationCore;
 (function (ApplicationCore) {
     var Activator = (function () {
-        function Activator(themeManager, dataRetriever) {
+        function Activator(themeManager) {
             this.themeManager = themeManager;
-            this.dataRetriever = dataRetriever;
         }
+        Activator.prototype.BuildInitialConfigurationModel = function () {
+            var initialConfigurationBuilder = new ApplicationCore.InitialConfigurationBuilder({});
+            initialConfigurationBuilder.Build();
+        };
         Activator.prototype.Run = function () {
-            this.dataRetriever.Build();
+            this.BuildInitialConfigurationModel();
         };
         return Activator;
     }());
     function Run() {
         var themeManager;
         themeManager = new ApplicationCore.MyThemeManager();
-        var dataRetriever;
-        dataRetriever = new ApplicationCore.InitialConfigurationRetriever({});
         var activator;
-        activator = new Activator(themeManager, dataRetriever);
+        activator = new Activator(themeManager);
         activator.Run();
-        ApplicationCore.Alert("ApplicationCore running!");
     }
     ApplicationCore.Run = Run;
 })(ApplicationCore || (ApplicationCore = {}));
