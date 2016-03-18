@@ -23,12 +23,33 @@ var ApplicationCore;
     }());
     ApplicationCore.MyThemeManager = MyThemeManager;
 })(ApplicationCore || (ApplicationCore = {}));
+var PathManager;
+(function (PathManager) {
+    var root = "./";
+    var data = "data/";
+    function Root() { return root; }
+    PathManager.Root = Root;
+    var Data = (function () {
+        function Data() {
+        }
+        Data.Root = root + data;
+        Data.InitialConfiguration = root + data + "InitialConfiguration.json";
+        return Data;
+    }());
+    PathManager.Data = Data;
+})(PathManager || (PathManager = {}));
 var ApplicationCore;
 (function (ApplicationCore) {
     var InitialConfigurationModel = (function () {
         function InitialConfigurationModel() {
         }
-        InitialConfigurationModel.prototype.ParseJson = function () {
+        InitialConfigurationModel.prototype.Initialise = function (parsedResponse) {
+            this.brandName = parsedResponse["BrandName"];
+            this.channelNames = parsedResponse["Channels"];
+            this.motto = parsedResponse["Motto"];
+            this.lang = parsedResponse["Lang"];
+            this.description = parsedResponse["Description"];
+            this.credits = parsedResponse["Credits"];
         };
         return InitialConfigurationModel;
     }());
@@ -41,13 +62,20 @@ var ApplicationCore;
         function BasicDataRetriever(model) {
             this.modelToFill = model;
         }
-        BasicDataRetriever.prototype.PerformRequest = function (requestToWrap) {
-            function levelRequestListener() {
-                var levels = JSON.parse(this.responseText);
-                console.log(levels);
+        BasicDataRetriever.prototype.ProcessResponse = function (parsedResponse) {
+            this.modelToFill.Initialise(parsedResponse);
+        };
+        BasicDataRetriever.prototype.BuildRequestListener = function () {
+            var scope = this;
+            function requestListener() {
+                var parsedResponse = JSON.parse(this.responseText);
+                scope.ProcessResponse(parsedResponse);
             }
+            return requestListener;
+        };
+        BasicDataRetriever.prototype.PerformRequest = function (requestToWrap) {
             var temporary_request = new XMLHttpRequest();
-            temporary_request.onload = levelRequestListener;
+            temporary_request.onload = this.BuildRequestListener();
             temporary_request.open(GET, requestToWrap.Resource, true);
             temporary_request.send();
             return this.modelToFill;
@@ -60,7 +88,7 @@ var ApplicationCore;
             _super.call(this, model);
         }
         InitialConfigurationBuilder.prototype.Build = function () {
-            var initialConfigurationRequest = { Resource: "http://localhost/data/InitialConfiguration.json" };
+            var initialConfigurationRequest = { Resource: PathManager.Data.InitialConfiguration };
             return _super.prototype.PerformRequest.call(this, initialConfigurationRequest);
         };
         return InitialConfigurationBuilder;
@@ -74,7 +102,8 @@ var ApplicationCore;
             this.themeManager = themeManager;
         }
         Activator.prototype.BuildInitialConfigurationModel = function () {
-            var initialConfigurationBuilder = new ApplicationCore.InitialConfigurationBuilder({});
+            var initialConfigurationModel = new ApplicationCore.InitialConfigurationModel();
+            var initialConfigurationBuilder = new ApplicationCore.InitialConfigurationBuilder(initialConfigurationModel);
             initialConfigurationBuilder.Build();
         };
         Activator.prototype.Run = function () {

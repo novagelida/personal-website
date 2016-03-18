@@ -2,10 +2,6 @@ namespace ApplicationCore
 {
 	var GET = "get";
 
-	export interface DataModel{
-
-	}
-
 	export interface DataRequest{
 		Resource : string;
 	}
@@ -15,21 +11,31 @@ namespace ApplicationCore
 	}
 
 	class BasicDataRetriever implements DataRetriever {
-		modelToFill : DataModel;
+		private modelToFill : DataModel;
 
 		constructor(model : DataModel) {
 			this.modelToFill = model;
 		}
 
-		PerformRequest(requestToWrap : DataRequest) {
-			//TODO extract this function as a method
-			function levelRequestListener() {
-				var levels = JSON.parse(this.responseText);
-				console.log(levels);
+		ProcessResponse(parsedResponse : void){
+			this.modelToFill.Initialise(parsedResponse);
+		}
+
+		BuildRequestListener()
+		{
+			var scope: BasicDataRetriever = this;
+
+			function requestListener() {
+				var parsedResponse = JSON.parse(this.responseText);
+				scope.ProcessResponse(parsedResponse);
 			}
 
+			return requestListener;
+		}
+
+		PerformRequest(requestToWrap : DataRequest) {
 			var temporary_request = new XMLHttpRequest();
-			temporary_request.onload = levelRequestListener;
+			temporary_request.onload = this.BuildRequestListener();
 			temporary_request.open(GET, requestToWrap.Resource, true);
 			temporary_request.send();
 
@@ -51,8 +57,8 @@ namespace ApplicationCore
 
 
 		Build() {
-			//TODO: I can create a class for building the paths
-			var initialConfigurationRequest: DataRequest = { Resource: "http://localhost/data/InitialConfiguration.json" };
+			
+			var initialConfigurationRequest: DataRequest = { Resource: PathManager.Data.InitialConfiguration };
 
 			return super.PerformRequest(initialConfigurationRequest);
 		}

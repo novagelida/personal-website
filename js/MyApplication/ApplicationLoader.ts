@@ -8,8 +8,9 @@ namespace ApplicationCore
 		}
 
 		BuildInitialConfigurationModel(){
-			
-			var initialConfigurationBuilder  = new InitialConfigurationBuilder({});
+
+			var initialConfigurationModel: InitialConfigurationModel = new InitialConfigurationModel();
+			var initialConfigurationBuilder = new InitialConfigurationBuilder(initialConfigurationModel);
 
 			initialConfigurationBuilder.Build();
 		}
