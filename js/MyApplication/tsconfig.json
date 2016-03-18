@@ -13,6 +13,9 @@
         "PathManager.ts",
         "InitialConfigurationModel.ts",
         "DataRetriever.ts",
+        "AttributeNames.ts",
+        "TagNames.ts",
+        "ApplicationPresenter.ts",
         "ApplicationLoader.ts"
     ]
 }

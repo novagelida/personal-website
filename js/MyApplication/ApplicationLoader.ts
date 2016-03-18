@@ -1,18 +1,26 @@
 namespace ApplicationCore
 {
 	class Activator{
-		private themeManager : ThemeManager;
+		private themeManager : IThemeManager;
+		private initialConfigurationModel: InitialConfigurationModel;
+		private applicationPresenter: Platform.IApplicationPresenter;
 
-		constructor(themeManager: ThemeManager) {
+		constructor(themeManager: IThemeManager) {
 			this.themeManager = themeManager;
 		}
 
 		BuildInitialConfigurationModel(){
 
-			var initialConfigurationModel: InitialConfigurationModel = new InitialConfigurationModel();
-			var initialConfigurationBuilder = new InitialConfigurationBuilder(initialConfigurationModel);
+			this.initialConfigurationModel = new InitialConfigurationModel();
+			var initialConfigurationBuilder = new InitialConfigurationBuilder(this.initialConfigurationModel);
 
 			initialConfigurationBuilder.Build();
+		}
+
+		//TODO: il presente può essere attivato solo quando i dati sono effettivamente stati ricevuti
+		InitialiseApplicationPresenter(){
+			this.applicationPresenter = new Platform.ApplicationPresenter(this.initialConfigurationModel);
+			this.applicationPresenter.Activate();
 		}
 
 		Run(){
@@ -20,12 +28,20 @@ namespace ApplicationCore
 		}
 	}
 
+	export class Notifier
+	{
+		//TODO: Implement a method for registering class to the notifier (Implement an observer pattern)
+		static ApplicationActivator: Activator;
+	}
+
 	export function Run() {
-		var themeManager: ThemeManager; 
+		var themeManager: IThemeManager; 
 		themeManager = new MyThemeManager();
 
-		var activator : Activator; 
+		var activator : Activator;
 		activator = new Activator(themeManager);
+
+		Notifier.ApplicationActivator = activator;
 
 		activator.Run();
 	}

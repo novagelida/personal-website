@@ -1,10 +1,10 @@
 namespace ApplicationCore
 {
-	export interface ThemeManager {
+	export interface IThemeManager {
 
 	}
 
-	export class MyThemeManager implements ThemeManager {
+	export class MyThemeManager implements IThemeManager {
 		testVar : string;
 		constructor() {
 		}

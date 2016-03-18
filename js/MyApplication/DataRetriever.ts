@@ -2,18 +2,18 @@ namespace ApplicationCore
 {
 	var GET = "get";
 
-	export interface DataRequest{
+	export interface IDataRequest{
 		Resource : string;
 	}
 
-	export interface DataRetriever {
-		PerformRequest(requestToWrap: DataRequest, modelToFill: DataModel) : DataModel;
+	export interface IDataRetriever {
+		PerformRequest(requestToWrap: IDataRequest, modelToFill: IDataModel) : IDataModel;
 	}
 
-	class BasicDataRetriever implements DataRetriever {
-		private modelToFill : DataModel;
+	class BasicDataRetriever implements IDataRetriever {
+		private modelToFill : IDataModel;
 
-		constructor(model : DataModel) {
+		constructor(model : IDataModel) {
 			this.modelToFill = model;
 		}
 
@@ -33,7 +33,7 @@ namespace ApplicationCore
 			return requestListener;
 		}
 
-		PerformRequest(requestToWrap : DataRequest) {
+		PerformRequest(requestToWrap : IDataRequest) {
 			var temporary_request = new XMLHttpRequest();
 			temporary_request.onload = this.BuildRequestListener();
 			temporary_request.open(GET, requestToWrap.Resource, true);
@@ -43,24 +43,24 @@ namespace ApplicationCore
 		}
 	}
 
-	export interface ModelBuilder
+	export interface IModelBuilder
 	{
 		Build() : void;
 	}
 
-	export class InitialConfigurationBuilder extends BasicDataRetriever implements ModelBuilder
+	export class InitialConfigurationBuilder extends BasicDataRetriever implements IModelBuilder
 	{
-		constructor(model : DataModel)
+		constructor(model: InitialConfigurationModel)
 		{
 			super(model);
 		}
 
 
 		Build() {
-			
-			var initialConfigurationRequest: DataRequest = { Resource: PathManager.Data.InitialConfiguration };
 
-			return super.PerformRequest(initialConfigurationRequest);
+			var initialConfigurationRequest: IDataRequest = { Resource: PathManager.Data.InitialConfiguration };
+
+			super.PerformRequest(initialConfigurationRequest);
 		}
 	}
 }
