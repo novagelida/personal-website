@@ -104,6 +104,40 @@ var ApplicationCore;
 })(ApplicationCore || (ApplicationCore = {}));
 var Platform;
 (function (Platform) {
+    function ReportInteraction(interactionName) {
+        InteractionManager.ManageInteraction(interactionName);
+    }
+    Platform.ReportInteraction = ReportInteraction;
+    var InteractionManager = (function () {
+        function InteractionManager() {
+        }
+        InteractionManager.AddToInteractionMap = function (interactionName, interactionHandler, scope) {
+            this.interactionMap[interactionName] = { Scope: scope, Handler: interactionHandler };
+        };
+        InteractionManager.ManageInteraction = function (interactionName) {
+            var handlerModel = this.interactionMap[interactionName];
+            handlerModel.Handler(handlerModel.Scope);
+        };
+        InteractionManager.interactionMap = {};
+        return InteractionManager;
+    }());
+    Platform.InteractionManager = InteractionManager;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
+    function SetCookie(name, value, expirationData, path) {
+        if (path === void 0) { path = "path=/"; }
+        document.cookie = name + "=" + value + "; expires=" + expirationData + "; " + path;
+    }
+    Platform.SetCookie = SetCookie;
+    function UnSetCookie(name, value, path) {
+        if (path === void 0) { path = "path=/"; }
+        document.cookie = name + "=" + value + "; " + path;
+    }
+    Platform.UnSetCookie = UnSetCookie;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
     var HeaderComponent = (function () {
         function HeaderComponent(data) {
             this.data = data;
@@ -130,6 +164,39 @@ var Platform;
         return HeaderComponent;
     }());
     Platform.HeaderComponent = HeaderComponent;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
+    var CookieBannerComponent = (function () {
+        function CookieBannerComponent(fatherElement) {
+            this.parentElement = fatherElement;
+            Platform.InteractionManager.AddToInteractionMap("REMOVE_COOKIE_BANNER", this.Hide, this);
+        }
+        CookieBannerComponent.prototype.GetParent = function () {
+            return this.parentElement;
+        };
+        CookieBannerComponent.prototype.GetElement = function () {
+            return this.cookieBannerElement;
+        };
+        CookieBannerComponent.prototype.GetTemplate = function () {
+            return "";
+        };
+        CookieBannerComponent.prototype.Initialise = function () {
+            this.cookieBannerElement = document.createElement('div');
+            this.cookieBannerElement.setAttribute('id', 'cookie-law');
+            this.cookieBannerElement.innerHTML = '<p>My website uses cookies. By continuing we assume your permission to deploy cookies, as detailed in my <a href="#cookiesPolicy" data-toggle="modal">privacy and cookies policy</a>. <a class="close-cookies-banner" href="javascript:void(0);" onclick="Platform.ReportInteraction(`REMOVE_COOKIE_BANNER`);"><i class="fa fa-times"></i></a></p>';
+            this.cookieBannerElement.className += ' cookiebanner';
+        };
+        CookieBannerComponent.prototype.Show = function () {
+            this.parentElement.appendChild(this.cookieBannerElement);
+        };
+        CookieBannerComponent.prototype.Hide = function (scope) {
+            if (scope === void 0) { scope = this; }
+            scope.GetParent().removeChild(scope.GetElement());
+        };
+        return CookieBannerComponent;
+    }());
+    Platform.CookieBannerComponent = CookieBannerComponent;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
@@ -185,6 +252,7 @@ var Platform;
         function ApplicationPresenter(data) {
             _super.call(this, data);
             this.headerComponent = new Platform.HeaderComponent(this.GetData());
+            this.cookieBanner = new Platform.CookieBannerComponent(document.getElementsByClassName("navbar")[0]);
         }
         ApplicationPresenter.prototype.GetData = function () {
             return this.data;
@@ -194,6 +262,8 @@ var Platform;
             htmlTag.setAttribute(Platform.AttributeNames.LANG, this.GetData().GetLanguage());
             this.headerComponent.Initialise();
             this.headerComponent.Show();
+            this.cookieBanner.Initialise();
+            this.cookieBanner.Show();
         };
         return ApplicationPresenter;
     }(Platform.AbstractApplicationPresenter));

@@ -8,7 +8,7 @@ namespace Platform{
 		constructor(data: ApplicationCore.InitialConfigurationModel){
 			super(data);
 			this.headerComponent = new HeaderComponent(this.GetData());
-			this.cookieBanner = new CookieBannerComponent();
+			this.cookieBanner = new CookieBannerComponent(document.getElementsByClassName("navbar")[0]);
 		}
 
 		private GetData(): ApplicationCore.InitialConfigurationModel{
@@ -22,6 +22,8 @@ namespace Platform{
 
 			this.headerComponent.Initialise();
 			this.headerComponent.Show();
+			this.cookieBanner.Initialise();
+			this.cookieBanner.Show();
 		}
 	}
 }

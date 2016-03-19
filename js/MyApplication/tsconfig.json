@@ -13,6 +13,7 @@
         "Logic/PathManager.ts",
         "Model/InitialConfigurationModel.ts",
         "Model/DataRetriever.ts",
+        "Platform/InteractionManager.ts",
         "Platform/Components/PlatformComponent.ts",
         "Platform/Components/HeaderComponent.ts",
         "Platform/Components/CookieBannerComponent.ts",
