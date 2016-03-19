@@ -104,10 +104,43 @@ var ApplicationCore;
 })(ApplicationCore || (ApplicationCore = {}));
 var Platform;
 (function (Platform) {
+    var HeaderComponent = (function () {
+        function HeaderComponent(data) {
+            this.data = data;
+        }
+        HeaderComponent.prototype.Initialise = function () {
+            this.descriptionMetaTag = Platform.CreateMetaTag(Platform.AttributeNames.DESCRIPTION, this.data.GetDescription());
+            this.authorMetaTag = Platform.CreateMetaTag(Platform.AttributeNames.AUTHOR, this.data.GetCredits());
+            this.InitialiseTitle();
+            this.head = document.getElementsByTagName(Platform.TagNames.HEAD)[0];
+        };
+        HeaderComponent.prototype.InitialiseTitle = function () {
+            this.title = document.createElement(Platform.TagNames.TITLE);
+            this.title.innerText = this.data.GetBrandName();
+        };
+        HeaderComponent.prototype.GetTemplate = function () {
+            return "";
+        };
+        HeaderComponent.prototype.Hide = function () { };
+        HeaderComponent.prototype.Show = function () {
+            this.head.appendChild(this.authorMetaTag);
+            this.head.appendChild(this.descriptionMetaTag);
+            this.head.appendChild(this.title);
+        };
+        return HeaderComponent;
+    }());
+    Platform.HeaderComponent = HeaderComponent;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
     var AttributeNames = (function () {
         function AttributeNames() {
         }
         AttributeNames.LANG = "lang";
+        AttributeNames.NAME = "name";
+        AttributeNames.CONTENT = "content";
+        AttributeNames.DESCRIPTION = "description";
+        AttributeNames.AUTHOR = "author";
         return AttributeNames;
     }());
     Platform.AttributeNames = AttributeNames;
@@ -118,37 +151,52 @@ var Platform;
         function TagNames() {
         }
         TagNames.HTML = "html";
+        TagNames.META = "meta";
+        TagNames.TITLE = "title";
+        TagNames.HEAD = "head";
         return TagNames;
     }());
     Platform.TagNames = TagNames;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
-    function CreateMetaTag() {
-        return document.createElement("meta");
+    function CreateMetaTag(name, content) {
+        var meta = document.createElement(Platform.TagNames.META);
+        meta.setAttribute(Platform.AttributeNames.NAME, name);
+        meta.setAttribute(Platform.AttributeNames.CONTENT, content);
+        return meta;
     }
-    var ApplicationPresenter = (function () {
-        function ApplicationPresenter(data) {
+    Platform.CreateMetaTag = CreateMetaTag;
+    var AbstractApplicationPresenter = (function () {
+        function AbstractApplicationPresenter(data) {
             this.data = data;
         }
-        ApplicationPresenter.prototype.Activate = function () {
+        AbstractApplicationPresenter.prototype.Activate = function () {
+            this.Render();
+        };
+        return AbstractApplicationPresenter;
+    }());
+    Platform.AbstractApplicationPresenter = AbstractApplicationPresenter;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
+    var ApplicationPresenter = (function (_super) {
+        __extends(ApplicationPresenter, _super);
+        function ApplicationPresenter(data) {
+            _super.call(this, data);
+            this.headerComponent = new Platform.HeaderComponent(this.GetData());
+        }
+        ApplicationPresenter.prototype.GetData = function () {
+            return this.data;
+        };
+        ApplicationPresenter.prototype.Render = function () {
             var htmlTag = document.getElementsByTagName(Platform.TagNames.HTML)[0];
-            htmlTag.setAttribute(Platform.AttributeNames.LANG, this.data.GetLanguage());
-            var descriptionMetaTag = CreateMetaTag();
-            descriptionMetaTag.setAttribute("name", "description");
-            descriptionMetaTag.setAttribute("content", this.data.GetDescription());
-            var authorMetaTag = CreateMetaTag();
-            authorMetaTag.setAttribute("name", "author");
-            authorMetaTag.setAttribute("content", this.data.GetCredits());
-            var websiteTitle = document.createElement("title");
-            websiteTitle.innerText = this.data.GetBrandName();
-            var head = document.getElementsByTagName("head")[0];
-            head.appendChild(authorMetaTag);
-            head.appendChild(descriptionMetaTag);
-            head.appendChild(websiteTitle);
+            htmlTag.setAttribute(Platform.AttributeNames.LANG, this.GetData().GetLanguage());
+            this.headerComponent.Initialise();
+            this.headerComponent.Show();
         };
         return ApplicationPresenter;
-    }());
+    }(Platform.AbstractApplicationPresenter));
     Platform.ApplicationPresenter = ApplicationPresenter;
 })(Platform || (Platform = {}));
 var ApplicationCore;
@@ -187,4 +235,3 @@ var ApplicationCore;
     }
     ApplicationCore.Run = Run;
 })(ApplicationCore || (ApplicationCore = {}));
-//# sourceMappingURL=MyApplicationCore.js.map

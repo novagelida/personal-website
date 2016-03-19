@@ -4,18 +4,21 @@
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
-        "out": "../../built/local/MyApplicationCore.js",
-        "sourceMap": true
+        "out": "E:/SitoPersonale/built/local/MyApplicationCore.js",
+        "sourceMap": false
     },
     "files": [
-        "Debug.ts",
-        "ThemeManager.ts",
-        "PathManager.ts",
-        "InitialConfigurationModel.ts",
-        "DataRetriever.ts",
-        "AttributeNames.ts",
-        "TagNames.ts",
-        "ApplicationPresenter.ts",
-        "ApplicationLoader.ts"
+        "Logic/Debug.ts",
+        "Platform/ThemeManager.ts",
+        "Logic/PathManager.ts",
+        "Model/InitialConfigurationModel.ts",
+        "Model/DataRetriever.ts",
+        "Platform/Components/PlatformComponent.ts",
+        "Platform/Components/HeaderComponent.ts",
+        "Platform/AttributeNames.ts",
+        "Platform/TagNames.ts",
+        "Platform/AbstractApplicationPresenter.ts",
+        "Platform/ApplicationPresenter.ts",
+        "Logic/ApplicationLoader.ts"
     ]
 }
