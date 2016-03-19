@@ -15,6 +15,7 @@
         "Model/DataRetriever.ts",
         "Platform/Components/PlatformComponent.ts",
         "Platform/Components/HeaderComponent.ts",
+        "Platform/Components/CookieBannerComponent.ts",
         "Platform/AttributeNames.ts",
         "Platform/TagNames.ts",
         "Platform/AbstractApplicationPresenter.ts",

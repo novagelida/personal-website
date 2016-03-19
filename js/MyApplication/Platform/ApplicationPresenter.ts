@@ -3,10 +3,12 @@ namespace Platform{
 	export class ApplicationPresenter extends AbstractApplicationPresenter
 	{
 		private headerComponent: HeaderComponent;
+		private cookieBanner: CookieBannerComponent;
 
 		constructor(data: ApplicationCore.InitialConfigurationModel){
 			super(data);
 			this.headerComponent = new HeaderComponent(this.GetData());
+			this.cookieBanner = new CookieBannerComponent();
 		}
 
 		private GetData(): ApplicationCore.InitialConfigurationModel{
