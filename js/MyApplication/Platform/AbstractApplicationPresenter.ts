@@ -8,8 +8,8 @@ namespace Platform
 	export function CreateMetaTag(name: string, content: string)
 	{
 		var meta = document.createElement(TagNames.META);
-		meta.setAttribute(AttributeNames.NAME, name);
-		meta.setAttribute(AttributeNames.CONTENT, content);
+		meta.setAttribute(AttributeNamesVO.NAME, name);
+		meta.setAttribute(AttributeNamesVO.CONTENT, content);
 		return meta;
 	}
 

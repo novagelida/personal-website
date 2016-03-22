@@ -8,11 +8,32 @@ namespace Platform{
 		document.cookie = name + "=" + value + "; "+ path;
 	}
 
-	export interface IPlatformComponent
+	export abstract class PlatformComponent
 	{
-		GetTemplate(): string;
-		Initialise() : void;
-		Show(): void;
-		Hide(): void;
+		protected targetElement: Element;
+		protected classNames: string[];
+
+		constructor(classNames: string){
+			this.classNames = classNames.split(" ");
+		}
+
+		GetTargetElement() : Node{
+			return this.targetElement;
+		}
+		
+		Initialise(){
+			for (var i = 0; i < this.classNames.length; ++i){
+
+				this.targetElement.classList.add(this.classNames[i]);
+			}
+		}
+
+		Show(scope: PlatformComponent = this) {
+			scope.targetElement.classList.add("displayNome");
+		}
+
+		Hide(scope: PlatformComponent = this) {
+			scope.targetElement.classList.remove("displayNome");
+		}
 	}
 }

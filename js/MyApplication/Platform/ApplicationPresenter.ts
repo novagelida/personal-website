@@ -4,26 +4,36 @@ namespace Platform{
 	{
 		private headerComponent: HeaderComponent;
 		private cookieBanner: CookieBannerComponent;
+		private navBar: Element;
 
 		constructor(data: ApplicationCore.InitialConfigurationModel){
 			super(data);
 			this.headerComponent = new HeaderComponent(this.GetData());
-			this.cookieBanner = new CookieBannerComponent(document.getElementsByClassName("navbar")[0]);
+			this.navBar = document.getElementsByClassName(ApplicationPlatformClassNames.NAV_BAR)[0];
+			this.cookieBanner = new CookieBannerComponent(this.navBar);
+
+			InteractionManager.AddToInteractionMap(InteractionVO.REMOVE_COOKIE_BANNER, this.RemoveCookieBannerHandler, this);
+		}
+
+		private RemoveCookieBannerHandler(scope: ApplicationPresenter){
+			scope.navBar.removeChild(scope.cookieBanner.GetTargetElement());
 		}
 
 		private GetData(): ApplicationCore.InitialConfigurationModel{
 			return <ApplicationCore.InitialConfigurationModel>this.data;
 		}
 
-		Render(){
-
+		private SetLangOnHtmlTag(){
 			var htmlTag = document.getElementsByTagName(TagNames.HTML)[0];
-			htmlTag.setAttribute(AttributeNames.LANG, this.GetData().GetLanguage());
+			htmlTag.setAttribute(AttributeNamesVO.LANG, this.GetData().GetLanguage());
+		}
 
+		Render(){
+			this.SetLangOnHtmlTag();
 			this.headerComponent.Initialise();
-			this.headerComponent.Show();
 			this.cookieBanner.Initialise();
-			this.cookieBanner.Show();
+			
+			this.navBar.appendChild(this.cookieBanner.GetTargetElement());
 		}
 	}
 }

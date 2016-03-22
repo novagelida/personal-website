@@ -1,10 +1,14 @@
 namespace Platform
 {
-	export class AttributeNames{
-		static LANG: string = "lang";
-		static NAME: string = "name";
-		static CONTENT: string = "content";
-		static DESCRIPTION: string = "description";
-		static AUTHOR: string = "author";
+	export class AttributeNamesVO{
+		static get LANG() :string {return "lang";}
+		static get NAME(): string { return "name"; }
+		static get CONTENT(): string { return "content"; }
+		static get DESCRIPTION(): string { return "description"; }
+		static get AUTHOR(): string { return "author"; }
+		static get ID(): string { return "id"; }
+		static get HREF(): string { return "href"; }
+		static get DATATOGGLE(): string { return "data-toggle"; }
+		static get ON_CLICK(): string { return "onclick";}
 	}
 }

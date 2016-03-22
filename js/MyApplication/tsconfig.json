@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "module": "system",
+        "target": "es5",
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
@@ -16,9 +17,15 @@
         "Platform/InteractionManager.ts",
         "Platform/Components/PlatformComponent.ts",
         "Platform/Components/HeaderComponent.ts",
+        "Platform/Components/LinkToModalAnchorElement.ts",
+        "Platform/Components/InteractionReporterAnchorElement.ts",
+        "Platform/Components/ClosingCrossComponent.ts",
         "Platform/Components/CookieBannerComponent.ts",
+        "Platform/InteractionVO.ts",
+        "Platform/ModalIdsVO.ts",
         "Platform/AttributeNames.ts",
         "Platform/TagNames.ts",
+        "Platform/ApplicationPlatformClassNames.ts",
         "Platform/AbstractApplicationPresenter.ts",
         "Platform/ApplicationPresenter.ts",
         "Logic/ApplicationLoader.ts"

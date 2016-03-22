@@ -135,82 +135,175 @@ var Platform;
         document.cookie = name + "=" + value + "; " + path;
     }
     Platform.UnSetCookie = UnSetCookie;
+    var PlatformComponent = (function () {
+        function PlatformComponent(classNames) {
+            this.classNames = classNames.split(" ");
+        }
+        PlatformComponent.prototype.GetTargetElement = function () {
+            return this.targetElement;
+        };
+        PlatformComponent.prototype.Initialise = function () {
+            for (var i = 0; i < this.classNames.length; ++i) {
+                this.targetElement.classList.add(this.classNames[i]);
+            }
+        };
+        PlatformComponent.prototype.Show = function (scope) {
+            if (scope === void 0) { scope = this; }
+            scope.targetElement.classList.add("displayNome");
+        };
+        PlatformComponent.prototype.Hide = function (scope) {
+            if (scope === void 0) { scope = this; }
+            scope.targetElement.classList.remove("displayNome");
+        };
+        return PlatformComponent;
+    }());
+    Platform.PlatformComponent = PlatformComponent;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
-    var HeaderComponent = (function () {
+    var HeaderComponent = (function (_super) {
+        __extends(HeaderComponent, _super);
         function HeaderComponent(data) {
+            _super.call(this, "");
             this.data = data;
         }
         HeaderComponent.prototype.Initialise = function () {
-            this.descriptionMetaTag = Platform.CreateMetaTag(Platform.AttributeNames.DESCRIPTION, this.data.GetDescription());
-            this.authorMetaTag = Platform.CreateMetaTag(Platform.AttributeNames.AUTHOR, this.data.GetCredits());
-            this.InitialiseTitle();
+            this.descriptionMetaTag = Platform.CreateMetaTag(Platform.AttributeNamesVO.DESCRIPTION, this.data.GetDescription());
+            this.authorMetaTag = Platform.CreateMetaTag(Platform.AttributeNamesVO.AUTHOR, this.data.GetCredits());
             this.head = document.getElementsByTagName(Platform.TagNames.HEAD)[0];
+            this.InitialiseTitle();
         };
         HeaderComponent.prototype.InitialiseTitle = function () {
             this.title = document.createElement(Platform.TagNames.TITLE);
             this.title.innerText = this.data.GetBrandName();
-        };
-        HeaderComponent.prototype.GetTemplate = function () {
-            return "";
-        };
-        HeaderComponent.prototype.Hide = function () { };
-        HeaderComponent.prototype.Show = function () {
             this.head.appendChild(this.authorMetaTag);
             this.head.appendChild(this.descriptionMetaTag);
             this.head.appendChild(this.title);
         };
+        HeaderComponent.prototype.GetTargetElement = function () {
+            return this.head;
+        };
         return HeaderComponent;
-    }());
+    }(Platform.PlatformComponent));
     Platform.HeaderComponent = HeaderComponent;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
-    var CookieBannerComponent = (function () {
-        function CookieBannerComponent(fatherElement) {
-            this.parentElement = fatherElement;
-            Platform.InteractionManager.AddToInteractionMap("REMOVE_COOKIE_BANNER", this.Hide, this);
+    var LinkToModalAnchorElement = (function (_super) {
+        __extends(LinkToModalAnchorElement, _super);
+        function LinkToModalAnchorElement(modalId, content) {
+            _super.call(this, "");
+            this.modalId = modalId;
+            this.content = content;
         }
-        CookieBannerComponent.prototype.GetParent = function () {
-            return this.parentElement;
+        LinkToModalAnchorElement.prototype.Initialise = function () {
+            this.targetElement = document.createElement(Platform.TagNames.ANCHOR);
+            this.targetElement.setAttribute(Platform.AttributeNamesVO.HREF, "#" + this.modalId);
+            this.targetElement.setAttribute(Platform.AttributeNamesVO.DATATOGGLE, "modal");
+            this.targetElement.textContent = this.content;
         };
-        CookieBannerComponent.prototype.GetElement = function () {
-            return this.cookieBannerElement;
+        return LinkToModalAnchorElement;
+    }(Platform.PlatformComponent));
+    Platform.LinkToModalAnchorElement = LinkToModalAnchorElement;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
+    var InteractionReporterAnchorElement = (function (_super) {
+        __extends(InteractionReporterAnchorElement, _super);
+        function InteractionReporterAnchorElement(interactionName, className) {
+            _super.call(this, className);
+            this.interactionName = interactionName;
+        }
+        InteractionReporterAnchorElement.prototype.CreateInteractionReporterString = function () {
+            return "Platform.ReportInteraction(`" + this.interactionName + "`);";
         };
-        CookieBannerComponent.prototype.GetTemplate = function () {
-            return "";
+        InteractionReporterAnchorElement.prototype.SetContent = function (content) {
+            this.targetElement.appendChild(content.GetTargetElement());
         };
+        InteractionReporterAnchorElement.prototype.Initialise = function () {
+            this.targetElement = document.createElement(Platform.TagNames.ANCHOR);
+            this.targetElement.className = this.classNames[0];
+            this.targetElement.setAttribute("href", "javascript:void(0);");
+            this.targetElement.setAttribute("onclick", this.CreateInteractionReporterString());
+        };
+        return InteractionReporterAnchorElement;
+    }(Platform.PlatformComponent));
+    Platform.InteractionReporterAnchorElement = InteractionReporterAnchorElement;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
+    var ClosingCrossComponent = (function (_super) {
+        __extends(ClosingCrossComponent, _super);
+        function ClosingCrossComponent() {
+            _super.call(this, "fa fa-times");
+        }
+        ClosingCrossComponent.prototype.Initialise = function () {
+            this.targetElement = document.createElement("i");
+            _super.prototype.Initialise.call(this);
+        };
+        return ClosingCrossComponent;
+    }(Platform.PlatformComponent));
+    Platform.ClosingCrossComponent = ClosingCrossComponent;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
+    var CookieBannerComponent = (function (_super) {
+        __extends(CookieBannerComponent, _super);
+        function CookieBannerComponent(fatherElement) {
+            _super.call(this, "cookiebanner");
+            this.bannerId = 'cookie-law';
+        }
         CookieBannerComponent.prototype.Initialise = function () {
-            this.cookieBannerElement = document.createElement('div');
-            this.cookieBannerElement.setAttribute('id', 'cookie-law');
-            this.cookieBannerElement.innerHTML = '<p>My website uses cookies. By continuing we assume your permission to deploy cookies, as detailed in my <a href="#cookiesPolicy" data-toggle="modal">privacy and cookies policy</a>. <a class="close-cookies-banner" href="javascript:void(0);" onclick="Platform.ReportInteraction(`REMOVE_COOKIE_BANNER`);"><i class="fa fa-times"></i></a></p>';
-            this.cookieBannerElement.className += ' cookiebanner';
-        };
-        CookieBannerComponent.prototype.Show = function () {
-            this.parentElement.appendChild(this.cookieBannerElement);
-        };
-        CookieBannerComponent.prototype.Hide = function (scope) {
-            if (scope === void 0) { scope = this; }
-            scope.GetParent().removeChild(scope.GetElement());
+            this.targetElement = document.createElement(Platform.TagNames.DIV);
+            this.targetElement.setAttribute(Platform.AttributeNamesVO.ID, this.bannerId);
+            var bannerCloserButton = new Platform.InteractionReporterAnchorElement(Platform.InteractionVO.REMOVE_COOKIE_BANNER, "close-cookies-banner");
+            bannerCloserButton.Initialise();
+            var cross = new Platform.ClosingCrossComponent();
+            cross.Initialise();
+            bannerCloserButton.SetContent(cross);
+            var linkToPolicy = new Platform.LinkToModalAnchorElement("cookiesPolicy", "privacy and cookies policy");
+            linkToPolicy.Initialise();
+            var bannerParagraph = document.createElement(Platform.TagNames.P);
+            bannerParagraph.textContent = 'My website uses cookies. By continuing we assume your permission to deploy cookies, as detailed in my ';
+            bannerParagraph.appendChild(linkToPolicy.GetTargetElement());
+            bannerParagraph.appendChild(bannerCloserButton.GetTargetElement());
+            this.targetElement.appendChild(bannerParagraph);
+            _super.prototype.Initialise.call(this);
         };
         return CookieBannerComponent;
-    }());
+    }(Platform.PlatformComponent));
     Platform.CookieBannerComponent = CookieBannerComponent;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
-    var AttributeNames = (function () {
-        function AttributeNames() {
+    var InteractionVO = (function () {
+        function InteractionVO() {
         }
-        AttributeNames.LANG = "lang";
-        AttributeNames.NAME = "name";
-        AttributeNames.CONTENT = "content";
-        AttributeNames.DESCRIPTION = "description";
-        AttributeNames.AUTHOR = "author";
-        return AttributeNames;
+        Object.defineProperty(InteractionVO, "REMOVE_COOKIE_BANNER", {
+            get: function () { return "REMOVE_COOKIE_BANNER"; },
+            enumerable: true,
+            configurable: true
+        });
+        return InteractionVO;
     }());
-    Platform.AttributeNames = AttributeNames;
+    Platform.InteractionVO = InteractionVO;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
+    var AttributeNamesVO = (function () {
+        function AttributeNamesVO() {
+        }
+        AttributeNamesVO.LANG = "lang";
+        AttributeNamesVO.NAME = "name";
+        AttributeNamesVO.CONTENT = "content";
+        AttributeNamesVO.DESCRIPTION = "description";
+        AttributeNamesVO.AUTHOR = "author";
+        AttributeNamesVO.ID = "id";
+        AttributeNamesVO.HREF = "href";
+        AttributeNamesVO.DATATOGGLE = "data-toggle";
+        return AttributeNamesVO;
+    }());
+    Platform.AttributeNamesVO = AttributeNamesVO;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
@@ -221,16 +314,29 @@ var Platform;
         TagNames.META = "meta";
         TagNames.TITLE = "title";
         TagNames.HEAD = "head";
+        TagNames.DIV = "div";
+        TagNames.ANCHOR = "a";
+        TagNames.P = "p";
         return TagNames;
     }());
     Platform.TagNames = TagNames;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
+    var ApplicationPlatformClassNames = (function () {
+        function ApplicationPlatformClassNames() {
+        }
+        ApplicationPlatformClassNames.NAV_BAR = "navbar";
+        return ApplicationPlatformClassNames;
+    }());
+    Platform.ApplicationPlatformClassNames = ApplicationPlatformClassNames;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
     function CreateMetaTag(name, content) {
         var meta = document.createElement(Platform.TagNames.META);
-        meta.setAttribute(Platform.AttributeNames.NAME, name);
-        meta.setAttribute(Platform.AttributeNames.CONTENT, content);
+        meta.setAttribute(Platform.AttributeNamesVO.NAME, name);
+        meta.setAttribute(Platform.AttributeNamesVO.CONTENT, content);
         return meta;
     }
     Platform.CreateMetaTag = CreateMetaTag;
@@ -252,18 +358,25 @@ var Platform;
         function ApplicationPresenter(data) {
             _super.call(this, data);
             this.headerComponent = new Platform.HeaderComponent(this.GetData());
-            this.cookieBanner = new Platform.CookieBannerComponent(document.getElementsByClassName("navbar")[0]);
+            this.navBar = document.getElementsByClassName(Platform.ApplicationPlatformClassNames.NAV_BAR)[0];
+            this.cookieBanner = new Platform.CookieBannerComponent(this.navBar);
+            Platform.InteractionManager.AddToInteractionMap(Platform.InteractionVO.REMOVE_COOKIE_BANNER, this.RemoveCookieBannerHandler, this);
         }
+        ApplicationPresenter.prototype.RemoveCookieBannerHandler = function (scope) {
+            scope.navBar.removeChild(scope.cookieBanner.GetTargetElement());
+        };
         ApplicationPresenter.prototype.GetData = function () {
             return this.data;
         };
-        ApplicationPresenter.prototype.Render = function () {
+        ApplicationPresenter.prototype.SetLangOnHtmlTag = function () {
             var htmlTag = document.getElementsByTagName(Platform.TagNames.HTML)[0];
-            htmlTag.setAttribute(Platform.AttributeNames.LANG, this.GetData().GetLanguage());
+            htmlTag.setAttribute(Platform.AttributeNamesVO.LANG, this.GetData().GetLanguage());
+        };
+        ApplicationPresenter.prototype.Render = function () {
+            this.SetLangOnHtmlTag();
             this.headerComponent.Initialise();
-            this.headerComponent.Show();
             this.cookieBanner.Initialise();
-            this.cookieBanner.Show();
+            this.navBar.appendChild(this.cookieBanner.GetTargetElement());
         };
         return ApplicationPresenter;
     }(Platform.AbstractApplicationPresenter));

@@ -1,40 +1,43 @@
 namespace Platform {
-	export class CookieBannerComponent implements IPlatformComponent {
-		private parentElement: Element;
-		private cookieBannerElement: Element;
+	//TODO: I can move this object in a file, or data object, or something else.
+	var BannerData = { 
+						CLASS: "cookiebanner",
+						ID: "cookie-law", 
+						CLOSE_BUTTON_CLASS_NAME: "close-cookies-banner", 
+						ANCHOR_CLASS_NAME: "privacy and cookies policy",
+						BANNER_CONTENT: "My website uses cookies. By continuing we assume your permission to deploy cookies, as detailed in my "
+					};
+
+	export class CookieBannerComponent extends PlatformComponent {
+		private bannerId: string = BannerData.ID;
 
 		constructor(fatherElement: Element) {
-			this.parentElement = fatherElement;
-			//TODO: remove hardcoded string
-			InteractionManager.AddToInteractionMap("REMOVE_COOKIE_BANNER", this.Hide, this);
-		}
-
-		GetParent(){
-			return this.parentElement;
-		}
-
-		GetElement(){
-			return this.cookieBannerElement;
-		}
-
-		GetTemplate() {
-			return "";
+			super(BannerData.CLASS);
 		}
 
 		Initialise() {
-			//TODO: create a template for this mess and remove hardcoded strings
-			this.cookieBannerElement = document.createElement('div');
-			this.cookieBannerElement.setAttribute('id', 'cookie-law');
-			this.cookieBannerElement.innerHTML = '<p>My website uses cookies. By continuing we assume your permission to deploy cookies, as detailed in my <a href="#cookiesPolicy" data-toggle="modal">privacy and cookies policy</a>. <a class="close-cookies-banner" href="javascript:void(0);" onclick="Platform.ReportInteraction(`REMOVE_COOKIE_BANNER`);"><i class="fa fa-times"></i></a></p>';
-			this.cookieBannerElement.className += ' cookiebanner';
-		}
+			this.targetElement = document.createElement(TagNames.DIV);
+			this.targetElement.setAttribute(AttributeNamesVO.ID, this.bannerId);
 
-		Show() {
-			this.parentElement.appendChild(this.cookieBannerElement);
-		}
+			var bannerCloseButton = new InteractionReporterAnchorElement(InteractionVO.REMOVE_COOKIE_BANNER, BannerData.CLOSE_BUTTON_CLASS_NAME);
+			bannerCloseButton.Initialise();
 
-		Hide(scope: CookieBannerComponent = this) {
-			scope.GetParent().removeChild(scope.GetElement());
+			var cross = new ClosingCrossComponent()
+			cross.Initialise();
+
+			bannerCloseButton.SetContent(cross);
+
+			var linkToPolicy = new LinkToModalAnchorElement(ModalIdsVO.COOKIES_POLICY, BannerData.ANCHOR_CLASS_NAME);
+			linkToPolicy.Initialise();
+
+			var bannerParagraph = document.createElement(TagNames.P);
+			bannerParagraph.textContent = BannerData.BANNER_CONTENT;
+			bannerParagraph.appendChild(linkToPolicy.GetTargetElement());
+			bannerParagraph.appendChild(bannerCloseButton.GetTargetElement());
+
+			this.targetElement.appendChild(bannerParagraph);
+
+			super.Initialise();
 		}
 	}
 }
