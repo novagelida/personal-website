@@ -223,8 +223,8 @@ var Platform;
         InteractionReporterAnchorElement.prototype.Initialise = function () {
             this.targetElement = document.createElement(Platform.TagNames.ANCHOR);
             this.targetElement.className = this.classNames[0];
-            this.targetElement.setAttribute("href", "javascript:void(0);");
-            this.targetElement.setAttribute("onclick", this.CreateInteractionReporterString());
+            this.targetElement.setAttribute(Platform.AttributeNamesVO.HREF, Platform.JavascriptVO.JAVASCRIPT_VOID);
+            this.targetElement.setAttribute(Platform.AttributeNamesVO.ON_CLICK, this.CreateInteractionReporterString());
         };
         return InteractionReporterAnchorElement;
     }(Platform.PlatformComponent));
@@ -247,32 +247,53 @@ var Platform;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
+    var BannerData = {
+        CLASS: "cookiebanner",
+        ID: "cookie-law",
+        CLOSE_BUTTON_CLASS_NAME: "close-cookies-banner",
+        ANCHOR_CLASS_NAME: "privacy and cookies policy",
+        BANNER_CONTENT: "My website uses cookies. By continuing we assume your permission to deploy cookies, as detailed in my "
+    };
     var CookieBannerComponent = (function (_super) {
         __extends(CookieBannerComponent, _super);
         function CookieBannerComponent(fatherElement) {
-            _super.call(this, "cookiebanner");
-            this.bannerId = 'cookie-law';
+            _super.call(this, BannerData.CLASS);
+            this.bannerId = BannerData.ID;
         }
         CookieBannerComponent.prototype.Initialise = function () {
             this.targetElement = document.createElement(Platform.TagNames.DIV);
             this.targetElement.setAttribute(Platform.AttributeNamesVO.ID, this.bannerId);
-            var bannerCloserButton = new Platform.InteractionReporterAnchorElement(Platform.InteractionVO.REMOVE_COOKIE_BANNER, "close-cookies-banner");
-            bannerCloserButton.Initialise();
+            var bannerCloseButton = new Platform.InteractionReporterAnchorElement(Platform.InteractionVO.REMOVE_COOKIE_BANNER, BannerData.CLOSE_BUTTON_CLASS_NAME);
+            bannerCloseButton.Initialise();
             var cross = new Platform.ClosingCrossComponent();
             cross.Initialise();
-            bannerCloserButton.SetContent(cross);
-            var linkToPolicy = new Platform.LinkToModalAnchorElement("cookiesPolicy", "privacy and cookies policy");
+            bannerCloseButton.SetContent(cross);
+            var linkToPolicy = new Platform.LinkToModalAnchorElement(Platform.ModalIdsVO.COOKIES_POLICY, BannerData.ANCHOR_CLASS_NAME);
             linkToPolicy.Initialise();
             var bannerParagraph = document.createElement(Platform.TagNames.P);
-            bannerParagraph.textContent = 'My website uses cookies. By continuing we assume your permission to deploy cookies, as detailed in my ';
+            bannerParagraph.textContent = BannerData.BANNER_CONTENT;
             bannerParagraph.appendChild(linkToPolicy.GetTargetElement());
-            bannerParagraph.appendChild(bannerCloserButton.GetTargetElement());
+            bannerParagraph.appendChild(bannerCloseButton.GetTargetElement());
             this.targetElement.appendChild(bannerParagraph);
             _super.prototype.Initialise.call(this);
         };
         return CookieBannerComponent;
     }(Platform.PlatformComponent));
     Platform.CookieBannerComponent = CookieBannerComponent;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
+    var JavascriptVO = (function () {
+        function JavascriptVO() {
+        }
+        Object.defineProperty(JavascriptVO, "JAVASCRIPT_VOID", {
+            get: function () { return "javascript:void(0);"; },
+            enumerable: true,
+            configurable: true
+        });
+        return JavascriptVO;
+    }());
+    Platform.JavascriptVO = JavascriptVO;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
@@ -290,17 +311,68 @@ var Platform;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
+    var ModalIdsVO = (function () {
+        function ModalIdsVO() {
+        }
+        Object.defineProperty(ModalIdsVO, "COOKIES_POLICY", {
+            get: function () { return "cookiesPolicy"; },
+            enumerable: true,
+            configurable: true
+        });
+        return ModalIdsVO;
+    }());
+    Platform.ModalIdsVO = ModalIdsVO;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
     var AttributeNamesVO = (function () {
         function AttributeNamesVO() {
         }
-        AttributeNamesVO.LANG = "lang";
-        AttributeNamesVO.NAME = "name";
-        AttributeNamesVO.CONTENT = "content";
-        AttributeNamesVO.DESCRIPTION = "description";
-        AttributeNamesVO.AUTHOR = "author";
-        AttributeNamesVO.ID = "id";
-        AttributeNamesVO.HREF = "href";
-        AttributeNamesVO.DATATOGGLE = "data-toggle";
+        Object.defineProperty(AttributeNamesVO, "LANG", {
+            get: function () { return "lang"; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(AttributeNamesVO, "NAME", {
+            get: function () { return "name"; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(AttributeNamesVO, "CONTENT", {
+            get: function () { return "content"; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(AttributeNamesVO, "DESCRIPTION", {
+            get: function () { return "description"; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(AttributeNamesVO, "AUTHOR", {
+            get: function () { return "author"; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(AttributeNamesVO, "ID", {
+            get: function () { return "id"; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(AttributeNamesVO, "HREF", {
+            get: function () { return "href"; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(AttributeNamesVO, "DATATOGGLE", {
+            get: function () { return "data-toggle"; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(AttributeNamesVO, "ON_CLICK", {
+            get: function () { return "onclick"; },
+            enumerable: true,
+            configurable: true
+        });
         return AttributeNamesVO;
     }());
     Platform.AttributeNamesVO = AttributeNamesVO;
