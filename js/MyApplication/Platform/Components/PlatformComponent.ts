@@ -26,7 +26,7 @@ namespace Platform{
 			if (this.classNames == undefined){
 				return;
 			}
-			
+
 			for (var i = 0; i < this.classNames.length; ++i){
 
 				this.targetElement.classList.add(this.classNames[i]);
@@ -34,11 +34,15 @@ namespace Platform{
 		}
 
 		Show(scope: PlatformComponent = this) {
-			scope.targetElement.classList.add("displayNome");
+			scope.targetElement.classList.add(ApplicationPlatformClassNames.DISPLAY_NONE);
 		}
 
 		Hide(scope: PlatformComponent = this) {
-			scope.targetElement.classList.remove("displayNome");
+			scope.targetElement.classList.remove(ApplicationPlatformClassNames.DISPLAY_NONE);
+		}
+
+		AppendChild(childToAppend: PlatformComponent){
+			this.targetElement.appendChild(childToAppend.GetTargetElement());
 		}
 	}
 }

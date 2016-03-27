@@ -33,7 +33,7 @@ namespace Platform{
 			this.headerComponent.Initialise();
 			this.navBar.Initialise();
 			this.cookieBanner.Initialise();
-			this.navBar.GetTargetElement().appendChild(this.cookieBanner.GetTargetElement());
+			this.navBar.AppendChild(this.cookieBanner);
 		}
 	}
 }

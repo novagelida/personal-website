@@ -153,11 +153,14 @@ var Platform;
         };
         PlatformComponent.prototype.Show = function (scope) {
             if (scope === void 0) { scope = this; }
-            scope.targetElement.classList.add("displayNome");
+            scope.targetElement.classList.add(Platform.ApplicationPlatformClassNames.DISPLAY_NONE);
         };
         PlatformComponent.prototype.Hide = function (scope) {
             if (scope === void 0) { scope = this; }
-            scope.targetElement.classList.remove("displayNome");
+            scope.targetElement.classList.remove(Platform.ApplicationPlatformClassNames.DISPLAY_NONE);
+        };
+        PlatformComponent.prototype.AppendChild = function (childToAppend) {
+            this.targetElement.appendChild(childToAppend.GetTargetElement());
         };
         return PlatformComponent;
     }());
@@ -190,21 +193,32 @@ var Platform;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
+    var LinkToPageTarget = (function (_super) {
+        __extends(LinkToPageTarget, _super);
+        function LinkToPageTarget(pageTarget, content) {
+            _super.call(this, "");
+            this.content = content;
+            this.pageTarget = pageTarget;
+        }
+        LinkToPageTarget.prototype.Initialise = function () {
+            this.targetElement = document.createElement(Platform.TagNames.ANCHOR);
+            this.targetElement.setAttribute(Platform.AttributeNamesVO.HREF, "#" + this.pageTarget);
+            this.targetElement.textContent = this.content;
+        };
+        return LinkToPageTarget;
+    }(Platform.PlatformComponent));
+    Platform.LinkToPageTarget = LinkToPageTarget;
     var LinkToModalAnchorElement = (function (_super) {
         __extends(LinkToModalAnchorElement, _super);
         function LinkToModalAnchorElement(modalId, content) {
-            _super.call(this, "");
-            this.modalId = modalId;
-            this.content = content;
+            _super.call(this, modalId, content);
         }
         LinkToModalAnchorElement.prototype.Initialise = function () {
-            this.targetElement = document.createElement(Platform.TagNames.ANCHOR);
-            this.targetElement.setAttribute(Platform.AttributeNamesVO.HREF, "#" + this.modalId);
+            _super.prototype.Initialise.call(this);
             this.targetElement.setAttribute(Platform.AttributeNamesVO.DATATOGGLE, "modal");
-            this.targetElement.textContent = this.content;
         };
         return LinkToModalAnchorElement;
-    }(Platform.PlatformComponent));
+    }(LinkToPageTarget));
     Platform.LinkToModalAnchorElement = LinkToModalAnchorElement;
 })(Platform || (Platform = {}));
 var Platform;
@@ -449,7 +463,17 @@ var Platform;
     var ApplicationPlatformClassNames = (function () {
         function ApplicationPlatformClassNames() {
         }
-        ApplicationPlatformClassNames.NAV_BAR = "navbar";
+        Object.defineProperty(ApplicationPlatformClassNames, "NAV_BAR", {
+            get: function () { return "navbar"; },
+            enumerable: true,
+            configurable: true
+        });
+        ;
+        Object.defineProperty(ApplicationPlatformClassNames, "DISPLAY_NONE", {
+            get: function () { return "displayNone"; },
+            enumerable: true,
+            configurable: true
+        });
         return ApplicationPlatformClassNames;
     }());
     Platform.ApplicationPlatformClassNames = ApplicationPlatformClassNames;
@@ -538,7 +562,7 @@ var Platform;
             this.headerComponent.Initialise();
             this.navBar.Initialise();
             this.cookieBanner.Initialise();
-            this.navBar.GetTargetElement().appendChild(this.cookieBanner.GetTargetElement());
+            this.navBar.AppendChild(this.cookieBanner);
         };
         return ApplicationPresenter;
     }(Platform.AbstractApplicationPresenter));
