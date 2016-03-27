@@ -9,7 +9,7 @@ namespace Platform{
 		constructor(data: ApplicationCore.InitialConfigurationModel){
 			super(data);
 			this.headerComponent = new HeaderComponent(this.GetData());
-			this.navBar = new NavBarComponent(ApplicationPlatformClassNames.NAV_BAR + " navbar-default navbar-fixed-top");
+			this.navBar = new NavBarComponent();
 			this.cookieBanner = new CookieBannerComponent();
 
 			InteractionManager.AddToInteractionMap(InteractionVO.REMOVE_COOKIE_BANNER, this.RemoveCookieBannerHandler, this);
@@ -33,8 +33,6 @@ namespace Platform{
 			this.headerComponent.Initialise();
 			this.navBar.Initialise();
 			this.cookieBanner.Initialise();
-			var body = document.getElementsByTagName("body")[0];
-			body.insertBefore(this.navBar.GetTargetElement(), body.childNodes[0]);
 			this.navBar.GetTargetElement().appendChild(this.cookieBanner.GetTargetElement());
 		}
 	}

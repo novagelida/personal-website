@@ -137,12 +137,16 @@ var Platform;
     Platform.UnSetCookie = UnSetCookie;
     var PlatformComponent = (function () {
         function PlatformComponent(classNames) {
-            this.classNames = classNames.split(" ");
+            if (classNames != "")
+                this.classNames = classNames.split(" ");
         }
         PlatformComponent.prototype.GetTargetElement = function () {
             return this.targetElement;
         };
         PlatformComponent.prototype.Initialise = function () {
+            if (this.classNames == undefined) {
+                return;
+            }
             for (var i = 0; i < this.classNames.length; ++i) {
                 this.targetElement.classList.add(this.classNames[i]);
             }
@@ -282,12 +286,12 @@ var Platform;
 (function (Platform) {
     var NavBarComponent = (function (_super) {
         __extends(NavBarComponent, _super);
-        function NavBarComponent(className) {
-            _super.call(this, className);
+        function NavBarComponent() {
+            _super.call(this, "");
             this.template = new Platform.NavBarTemplate();
         }
         NavBarComponent.prototype.Initialise = function () {
-            this.targetElement = document.createElement(Platform.TagNames.NAV);
+            this.targetElement = document.getElementsByClassName(Platform.ApplicationPlatformClassNames.NAV_BAR)[0];
             this.targetElement.innerHTML = this.template.getHTMLTemplate();
             _super.prototype.Initialise.call(this);
         };
@@ -515,7 +519,7 @@ var Platform;
         function ApplicationPresenter(data) {
             _super.call(this, data);
             this.headerComponent = new Platform.HeaderComponent(this.GetData());
-            this.navBar = new Platform.NavBarComponent(Platform.ApplicationPlatformClassNames.NAV_BAR + " navbar-default navbar-fixed-top");
+            this.navBar = new Platform.NavBarComponent();
             this.cookieBanner = new Platform.CookieBannerComponent();
             Platform.InteractionManager.AddToInteractionMap(Platform.InteractionVO.REMOVE_COOKIE_BANNER, this.RemoveCookieBannerHandler, this);
         }
@@ -534,8 +538,6 @@ var Platform;
             this.headerComponent.Initialise();
             this.navBar.Initialise();
             this.cookieBanner.Initialise();
-            var body = document.getElementsByTagName("body")[0];
-            body.insertBefore(this.navBar.GetTargetElement(), body.childNodes[0]);
             this.navBar.GetTargetElement().appendChild(this.cookieBanner.GetTargetElement());
         };
         return ApplicationPresenter;

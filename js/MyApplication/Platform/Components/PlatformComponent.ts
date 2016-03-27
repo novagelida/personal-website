@@ -14,7 +14,8 @@ namespace Platform{
 		protected classNames: string[];
 
 		constructor(classNames: string){
-			this.classNames = classNames.split(" ");
+			if (classNames != "")
+				this.classNames = classNames.split(" ");
 		}
 
 		GetTargetElement() : Element{
@@ -22,6 +23,10 @@ namespace Platform{
 		}
 		
 		Initialise(){
+			if (this.classNames == undefined){
+				return;
+			}
+			
 			for (var i = 0; i < this.classNames.length; ++i){
 
 				this.targetElement.classList.add(this.classNames[i]);
