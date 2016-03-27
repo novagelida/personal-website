@@ -1,12 +1,13 @@
 namespace Platform
 {
 	export class TagNames {
-		static HTML: string = "html";
-		static META: string = "meta";
-		static TITLE: string = "title";
-		static HEAD: string = "head";
-		static DIV: string = "div";
-		static ANCHOR: string = "a";
-		static P: string = "p";
+		static get HTML(): string { return "html"; }
+		static get META(): string { return "meta"; }
+		static get TITLE(): string {return "title"; }
+		static get HEAD(): string { return "head"; }
+		static get DIV(): string { return "div"; }
+		static get ANCHOR(): string { return "a"; }
+		static get P(): string { return "p"; }
+		static get NAV(): string { return "nav";}
 	}
 }

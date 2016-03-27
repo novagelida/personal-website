@@ -4,7 +4,6 @@ namespace Platform{
 		private descriptionMetaTag: HTMLElement;
 		private authorMetaTag: HTMLElement;
 		private title: HTMLElement;
-		private head: Element;
 		private data: ApplicationCore.InitialConfigurationModel;
 
 		constructor(data: ApplicationCore.InitialConfigurationModel){
@@ -16,7 +15,7 @@ namespace Platform{
 			this.descriptionMetaTag = CreateMetaTag(AttributeNamesVO.DESCRIPTION, this.data.GetDescription());
 			this.authorMetaTag = CreateMetaTag(AttributeNamesVO.AUTHOR, this.data.GetCredits());
 
-			this.head = document.getElementsByTagName(TagNames.HEAD)[0];
+			this.targetElement = document.getElementsByTagName(TagNames.HEAD)[0];
 
 			this.InitialiseTitle();
 		}
@@ -26,14 +25,9 @@ namespace Platform{
 			this.title = document.createElement(TagNames.TITLE);
 			this.title.innerText = this.data.GetBrandName();
 
-			this.head.appendChild(this.authorMetaTag);
-			this.head.appendChild(this.descriptionMetaTag);
-			this.head.appendChild(this.title);
-		}
-
-		GetTargetElement()
-		{
-			return this.head;
+			this.targetElement.appendChild(this.authorMetaTag);
+			this.targetElement.appendChild(this.descriptionMetaTag);
+			this.targetElement.appendChild(this.title);
 		}
 	}
 }

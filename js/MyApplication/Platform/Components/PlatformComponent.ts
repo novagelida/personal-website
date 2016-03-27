@@ -17,7 +17,7 @@ namespace Platform{
 			this.classNames = classNames.split(" ");
 		}
 
-		GetTargetElement() : Node{
+		GetTargetElement() : Element{
 			return this.targetElement;
 		}
 		

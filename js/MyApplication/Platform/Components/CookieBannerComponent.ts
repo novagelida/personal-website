@@ -11,7 +11,7 @@ namespace Platform {
 	export class CookieBannerComponent extends PlatformComponent {
 		private bannerId: string = BannerData.ID;
 
-		constructor(fatherElement: Element) {
+		constructor() {
 			super(BannerData.CLASS);
 		}
 

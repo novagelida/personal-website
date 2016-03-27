@@ -170,18 +170,15 @@ var Platform;
         HeaderComponent.prototype.Initialise = function () {
             this.descriptionMetaTag = Platform.CreateMetaTag(Platform.AttributeNamesVO.DESCRIPTION, this.data.GetDescription());
             this.authorMetaTag = Platform.CreateMetaTag(Platform.AttributeNamesVO.AUTHOR, this.data.GetCredits());
-            this.head = document.getElementsByTagName(Platform.TagNames.HEAD)[0];
+            this.targetElement = document.getElementsByTagName(Platform.TagNames.HEAD)[0];
             this.InitialiseTitle();
         };
         HeaderComponent.prototype.InitialiseTitle = function () {
             this.title = document.createElement(Platform.TagNames.TITLE);
             this.title.innerText = this.data.GetBrandName();
-            this.head.appendChild(this.authorMetaTag);
-            this.head.appendChild(this.descriptionMetaTag);
-            this.head.appendChild(this.title);
-        };
-        HeaderComponent.prototype.GetTargetElement = function () {
-            return this.head;
+            this.targetElement.appendChild(this.authorMetaTag);
+            this.targetElement.appendChild(this.descriptionMetaTag);
+            this.targetElement.appendChild(this.title);
         };
         return HeaderComponent;
     }(Platform.PlatformComponent));
@@ -256,7 +253,7 @@ var Platform;
     };
     var CookieBannerComponent = (function (_super) {
         __extends(CookieBannerComponent, _super);
-        function CookieBannerComponent(fatherElement) {
+        function CookieBannerComponent() {
             _super.call(this, BannerData.CLASS);
             this.bannerId = BannerData.ID;
         }
@@ -280,6 +277,23 @@ var Platform;
         return CookieBannerComponent;
     }(Platform.PlatformComponent));
     Platform.CookieBannerComponent = CookieBannerComponent;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
+    var NavBarComponent = (function (_super) {
+        __extends(NavBarComponent, _super);
+        function NavBarComponent(className) {
+            _super.call(this, className);
+            this.template = new Platform.NavBarTemplate();
+        }
+        NavBarComponent.prototype.Initialise = function () {
+            this.targetElement = document.createElement(Platform.TagNames.NAV);
+            this.targetElement.innerHTML = this.template.getHTMLTemplate();
+            _super.prototype.Initialise.call(this);
+        };
+        return NavBarComponent;
+    }(Platform.PlatformComponent));
+    Platform.NavBarComponent = NavBarComponent;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
@@ -382,13 +396,46 @@ var Platform;
     var TagNames = (function () {
         function TagNames() {
         }
-        TagNames.HTML = "html";
-        TagNames.META = "meta";
-        TagNames.TITLE = "title";
-        TagNames.HEAD = "head";
-        TagNames.DIV = "div";
-        TagNames.ANCHOR = "a";
-        TagNames.P = "p";
+        Object.defineProperty(TagNames, "HTML", {
+            get: function () { return "html"; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(TagNames, "META", {
+            get: function () { return "meta"; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(TagNames, "TITLE", {
+            get: function () { return "title"; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(TagNames, "HEAD", {
+            get: function () { return "head"; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(TagNames, "DIV", {
+            get: function () { return "div"; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(TagNames, "ANCHOR", {
+            get: function () { return "a"; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(TagNames, "P", {
+            get: function () { return "p"; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(TagNames, "NAV", {
+            get: function () { return "nav"; },
+            enumerable: true,
+            configurable: true
+        });
         return TagNames;
     }());
     Platform.TagNames = TagNames;
@@ -402,6 +449,44 @@ var Platform;
         return ApplicationPlatformClassNames;
     }());
     Platform.ApplicationPlatformClassNames = ApplicationPlatformClassNames;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
+    var NavBarTemplate = (function () {
+        function NavBarTemplate() {
+        }
+        NavBarTemplate.prototype.getHTMLTemplate = function () {
+            return "<div class= 'container'>" +
+                "<div class='navbar-header page-scroll'>" +
+                "<button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1'>" +
+                "<span class='sr-only'> Toggle navigation</span>" +
+                "<span class='icon-bar'> </span>" +
+                "<span class='icon-bar'> </span>" +
+                "<span class='icon-bar'> </span>" +
+                "</button>" +
+                "<a class='navbar-brand' href= '#page-top'> Rosario Crisci</a>" +
+                "</div>" +
+                "<div class='collapse navbar-collapse' id= 'bs-example-navbar-collapse-1'>" +
+                "<ul class='nav navbar-nav navbar-right'>" +
+                "<li class='hidden'>" +
+                "<a href='#page-top'> </a>" +
+                "</li>" +
+                "<li class='page-scroll'>" +
+                "<a href='#portfolio'> Portfolio </a>" +
+                "</li>" +
+                "<li class='page-scroll'>" +
+                "<a href='#about' > About </a>" +
+                "</li>" +
+                "<li class='page-scroll'>" +
+                "<a href='#contact'> Contact </a>" +
+                "</li>" +
+                "</ul>" +
+                "</div>" +
+                "</div>";
+        };
+        return NavBarTemplate;
+    }());
+    Platform.NavBarTemplate = NavBarTemplate;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
@@ -430,12 +515,12 @@ var Platform;
         function ApplicationPresenter(data) {
             _super.call(this, data);
             this.headerComponent = new Platform.HeaderComponent(this.GetData());
-            this.navBar = document.getElementsByClassName(Platform.ApplicationPlatformClassNames.NAV_BAR)[0];
-            this.cookieBanner = new Platform.CookieBannerComponent(this.navBar);
+            this.navBar = new Platform.NavBarComponent(Platform.ApplicationPlatformClassNames.NAV_BAR + " navbar-default navbar-fixed-top");
+            this.cookieBanner = new Platform.CookieBannerComponent();
             Platform.InteractionManager.AddToInteractionMap(Platform.InteractionVO.REMOVE_COOKIE_BANNER, this.RemoveCookieBannerHandler, this);
         }
         ApplicationPresenter.prototype.RemoveCookieBannerHandler = function (scope) {
-            scope.navBar.removeChild(scope.cookieBanner.GetTargetElement());
+            scope.navBar.GetTargetElement().removeChild(scope.cookieBanner.GetTargetElement());
         };
         ApplicationPresenter.prototype.GetData = function () {
             return this.data;
@@ -447,8 +532,11 @@ var Platform;
         ApplicationPresenter.prototype.Render = function () {
             this.SetLangOnHtmlTag();
             this.headerComponent.Initialise();
+            this.navBar.Initialise();
             this.cookieBanner.Initialise();
-            this.navBar.appendChild(this.cookieBanner.GetTargetElement());
+            var body = document.getElementsByTagName("body")[0];
+            body.insertBefore(this.navBar.GetTargetElement(), body.childNodes[0]);
+            this.navBar.GetTargetElement().appendChild(this.cookieBanner.GetTargetElement());
         };
         return ApplicationPresenter;
     }(Platform.AbstractApplicationPresenter));
