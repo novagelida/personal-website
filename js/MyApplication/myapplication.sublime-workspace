@@ -1,0 +1,493 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"navb",
+				"navBarHeader	property"
+			],
+			[
+				"Plat",
+				"PlatformComponent	class"
+			],
+			[
+				"Pla",
+				"PlatformComponent	class"
+			],
+			[
+				"Ini",
+				"InitialiseFromTemplate	method"
+			],
+			[
+				"Appl",
+				"ApplicationPlatformClassNames	class"
+			],
+			[
+				"getel",
+				"getElementsByClassName	method"
+			],
+			[
+				"ch",
+				"childNodes	property"
+			],
+			[
+				"get",
+				"getElementsByTagName	method"
+			],
+			[
+				"NavBa",
+				"NavBarTemplate	class"
+			],
+			[
+				"banne",
+				"bannerCloserButton	local var"
+			],
+			[
+				"Intera",
+				"InteractionVO	class"
+			],
+			[
+				"Inn",
+				"innerHTML	property"
+			],
+			[
+				"add",
+				"appendChild	method"
+			],
+			[
+				"Attr",
+				"AttributeNames	class"
+			],
+			[
+				"crea",
+				"createElement	method"
+			],
+			[
+				"Get",
+				"GetTargetElement	method"
+			],
+			[
+				"class",
+				"className	parameter"
+			],
+			[
+				"cla",
+				"className	property"
+			],
+			[
+				"cre",
+				"createElement	method"
+			],
+			[
+				"At",
+				"AttributeNames	class"
+			],
+			[
+				"coo",
+				"cookieValue	property"
+			],
+			[
+				"cooke",
+				"cookieName	property"
+			],
+			[
+				"cook",
+				"cookieName	property"
+			],
+			[
+				"APp",
+				"ApplicationCore	module"
+			],
+			[
+				"Initia",
+				"InitialConfigurationModel	class"
+			],
+			[
+				"Applic",
+				"ApplicationCore	module"
+			],
+			[
+				"Abstra",
+				"AbstractApplicationPresenter	class"
+			],
+			[
+				"ex",
+				"extends	keyword"
+			],
+			[
+				"Inne",
+				"innerText	property"
+			],
+			[
+				"set",
+				"setAttribute	method"
+			],
+			[
+				"parse",
+				"parsedResponse	parameter"
+			],
+			[
+				"Data",
+				"DataModel	interface"
+			],
+			[
+				"fun",
+				"function	keyword"
+			],
+			[
+				"init",
+				"InitialConfigurationModel	class"
+			],
+			[
+				"Appli",
+				"ApplicationCore	module"
+			],
+			[
+				"applica",
+				"application"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/E/SitoPersonale/index.html",
+			"settings":
+			{
+				"buffer_size": 53268,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Platform/Components/NavBar/NavBarHeaderComponent.ts",
+			"settings":
+			{
+				"buffer_size": 925,
+				"line_ending": "Windows",
+				"name": "namespace Platform{"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 101.0,
+		"last_filter": "TodoReview: Project Files",
+		"selected_items":
+		[
+			[
+				"TodoReview: Project Files",
+				"TodoReview: Project Files"
+			],
+			[
+				"Package Control: Install Package",
+				"Package Control: Install Package"
+			],
+			[
+				"rename",
+				"TypeScript: Rename"
+			],
+			[
+				"Typescript: Sh",
+				"TypeScript: Show Error List"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 571.0
+	},
+	"console":
+	{
+		"height": 162.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/E/SitoPersonale/js/MyApplication",
+		"/E/SitoPersonale/js/MyApplication/Logic",
+		"/E/SitoPersonale/js/MyApplication/Platform",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBar",
+		"/E/SitoPersonale/js/MyApplication/Platform/Templates"
+	],
+	"file_history":
+	[
+		"/E/SitoPersonale/js/MyApplication/tsconfig.json",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/PlatformComponent.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Templates/NavBarTemplate.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Templates/BurgerMenuTemplate.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBarComponent.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBar/NavBarComponent.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/ApplicationPresenter.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/CookieBannerComponent.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/LinkToModalAnchorElement.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/ValueObjects/NavBarClsVO.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/ValueObjects/ApplicationPlatformClassNames.ts",
+		"/C/Users/admin/AppData/Local/Temp/fz3temp-1/index.html",
+		"/E/SitoPersonale/js/MyApplication/Platform/ValueObjects/TagNames.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/HeaderComponent.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Templates/ITemplate.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/AttributeNames.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/InteractionReporterAnchorElement.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/ValueObjects/JavascriptVO.ts",
+		"/E/SitoPersonale/index.html",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/ClosingCrossComponent.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/ModalIdsVO.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/ThemeManager.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/InteractionVO.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/AbstractApplicationPresenter.ts",
+		"/E/SitoPersonale/js/MyApplication/Logic/Debug.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/TagNames.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/InteractionManager.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/ApplicationPlatformClassNames.ts",
+		"/E/SitoPersonale/js/MyApplication/Logic/ApplicationLoader.ts",
+		"/E/SitoPersonale/js/cookie-banner.js",
+		"/E/SitoPersonale/js/rosarioCrisci.js",
+		"/E/SitoPersonale/js/MyApplication/Platform/HeaderComponent.ts",
+		"/E/SitoPersonale/js/MyApplication/AttributeNames.ts",
+		"/E/SitoPersonale/js/MyApplication/ApplicationPresenter.ts",
+		"/E/SitoPersonale/js/MyApplication/ApplicationLoader.ts",
+		"/E/SitoPersonale/js/MyApplication/TagNames.ts",
+		"/E/SitoPersonale/data/InitialConfiguration.json",
+		"/E/SitoPersonale/js/MyApplication/DataRetriever.ts",
+		"/E/SitoPersonale/js/MyApplication/InitialConfigurationModel.ts",
+		"/E/SitoPersonale/js/MyApplication/ThemeManager.js",
+		"/C/Users/admin/AppData/Roaming/Sublime Text 3/Packages/TypeScript/tsserver/lib.d.ts",
+		"/E/SitoPersonale/js/MyApplication/ThemeManager.ts",
+		"/E/SitoPersonale/js/MyApplication/PathManager.ts",
+		"/E/SitoPersonale/built/local/MyApplicationCore.js",
+		"/E/SitoPersonale/js/MyApplication/Debug.ts",
+		"/E/SitoPersonale/js/MyApplication/DataRetriever.js",
+		"/E/SitoPersonale/js/MyApplication/Debug.js",
+		"/E/SitoPersonale/built/local/tsc.js",
+		"/E/SitoPersonale/js/MyApplication/Application Loader"
+	],
+	"find":
+	{
+		"height": 30.0
+	},
+	"find_in_files":
+	{
+		"height": 117.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"InteractionReporterAnchorElement",
+			"InitialiseTitle",
+			"javas",
+			"checkCookie",
+			"eraseCookie",
+			"createCookie",
+			"InitialConfigurationModel",
+			" ",
+			"}"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/E/SitoPersonale/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 53268,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1515,
+								1515
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 132.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Platform/Components/NavBar/NavBarHeaderComponent.ts",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 925,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								336,
+								336
+							]
+						],
+						"settings":
+						{
+							"auto_name": "namespace Platform{",
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.errorlist":
+	{
+		"height": 130.0
+	},
+	"output.exec":
+	{
+		"height": 124.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "myapplication.sublime-project",
+	"replace":
+	{
+		"height": 56.0
+	},
+	"save_all_on_build": false,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 368.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

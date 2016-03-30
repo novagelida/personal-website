@@ -2,13 +2,7 @@ namespace Platform{
 	export class ClosingCrossComponent extends PlatformComponent{
 
 		constructor(){
-			super("fa fa-times");
+			super(document.createElement("i"), "fa fa-times");
 		}
-
-		Initialise(){
-			this.targetElement = document.createElement("i");
-			super.Initialise();
-		}
-
 	}
 }

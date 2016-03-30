@@ -1,5 +1,4 @@
 namespace Platform{
-
 	export class ApplicationPresenter extends AbstractApplicationPresenter
 	{
 		private headerComponent: HeaderComponent;
@@ -9,7 +8,7 @@ namespace Platform{
 		constructor(data: ApplicationCore.InitialConfigurationModel){
 			super(data);
 			this.headerComponent = new HeaderComponent(this.GetData());
-			this.navBar = new NavBarComponent();
+			this.navBar = new NavBarComponent(document.getElementsByClassName(NavBarClsVO.NAV_BAR)[0]);
 			this.cookieBanner = new CookieBannerComponent();
 
 			InteractionManager.AddToInteractionMap(InteractionVO.REMOVE_COOKIE_BANNER, this.RemoveCookieBannerHandler, this);
@@ -32,8 +31,8 @@ namespace Platform{
 			this.SetLangOnHtmlTag();
 			this.headerComponent.Initialise();
 			this.navBar.Initialise();
+			this.navBar.GetTargetElement().appendChild(this.cookieBanner.GetTargetElement());
 			this.cookieBanner.Initialise();
-			this.navBar.AppendChild(this.cookieBanner);
 		}
 	}
 }

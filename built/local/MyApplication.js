@@ -136,9 +136,11 @@ var Platform;
     }
     Platform.UnSetCookie = UnSetCookie;
     var PlatformComponent = (function () {
-        function PlatformComponent(classNames) {
+        function PlatformComponent(target, classNames) {
+            if (classNames === void 0) { classNames = ""; }
             if (classNames != "")
                 this.classNames = classNames.split(" ");
+            this.targetElement = target;
         }
         PlatformComponent.prototype.GetTargetElement = function () {
             return this.targetElement;
@@ -171,13 +173,12 @@ var Platform;
     var HeaderComponent = (function (_super) {
         __extends(HeaderComponent, _super);
         function HeaderComponent(data) {
-            _super.call(this, "");
+            _super.call(this, document.getElementsByTagName(Platform.TagNames.HEAD)[0]);
             this.data = data;
         }
         HeaderComponent.prototype.Initialise = function () {
             this.descriptionMetaTag = Platform.CreateMetaTag(Platform.AttributeNamesVO.DESCRIPTION, this.data.GetDescription());
             this.authorMetaTag = Platform.CreateMetaTag(Platform.AttributeNamesVO.AUTHOR, this.data.GetCredits());
-            this.targetElement = document.getElementsByTagName(Platform.TagNames.HEAD)[0];
             this.InitialiseTitle();
         };
         HeaderComponent.prototype.InitialiseTitle = function () {
@@ -193,21 +194,22 @@ var Platform;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
-    var LinkToPageTarget = (function (_super) {
-        __extends(LinkToPageTarget, _super);
-        function LinkToPageTarget(pageTarget, content) {
-            _super.call(this, "");
+    var LinkToPageTargetAnchorElement = (function (_super) {
+        __extends(LinkToPageTargetAnchorElement, _super);
+        function LinkToPageTargetAnchorElement(pageTarget, content, className) {
+            if (className === void 0) { className = ""; }
+            _super.call(this, document.createElement(Platform.TagNames.ANCHOR));
             this.content = content;
             this.pageTarget = pageTarget;
+            this.targetElement.className = className;
         }
-        LinkToPageTarget.prototype.Initialise = function () {
-            this.targetElement = document.createElement(Platform.TagNames.ANCHOR);
+        LinkToPageTargetAnchorElement.prototype.Initialise = function () {
             this.targetElement.setAttribute(Platform.AttributeNamesVO.HREF, "#" + this.pageTarget);
             this.targetElement.textContent = this.content;
         };
-        return LinkToPageTarget;
+        return LinkToPageTargetAnchorElement;
     }(Platform.PlatformComponent));
-    Platform.LinkToPageTarget = LinkToPageTarget;
+    Platform.LinkToPageTargetAnchorElement = LinkToPageTargetAnchorElement;
     var LinkToModalAnchorElement = (function (_super) {
         __extends(LinkToModalAnchorElement, _super);
         function LinkToModalAnchorElement(modalId, content) {
@@ -215,18 +217,18 @@ var Platform;
         }
         LinkToModalAnchorElement.prototype.Initialise = function () {
             _super.prototype.Initialise.call(this);
-            this.targetElement.setAttribute(Platform.AttributeNamesVO.DATATOGGLE, "modal");
+            this.targetElement.setAttribute(Platform.AttributeNamesVO.DATA_TOGGLE, "modal");
         };
         return LinkToModalAnchorElement;
-    }(LinkToPageTarget));
+    }(LinkToPageTargetAnchorElement));
     Platform.LinkToModalAnchorElement = LinkToModalAnchorElement;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
     var InteractionReporterAnchorElement = (function (_super) {
         __extends(InteractionReporterAnchorElement, _super);
-        function InteractionReporterAnchorElement(interactionName, className) {
-            _super.call(this, className);
+        function InteractionReporterAnchorElement(target, interactionName, className) {
+            _super.call(this, target, className);
             this.interactionName = interactionName;
         }
         InteractionReporterAnchorElement.prototype.CreateInteractionReporterString = function () {
@@ -236,7 +238,6 @@ var Platform;
             this.targetElement.appendChild(content.GetTargetElement());
         };
         InteractionReporterAnchorElement.prototype.Initialise = function () {
-            this.targetElement = document.createElement(Platform.TagNames.ANCHOR);
             this.targetElement.className = this.classNames[0];
             this.targetElement.setAttribute(Platform.AttributeNamesVO.HREF, Platform.JavascriptVO.JAVASCRIPT_VOID);
             this.targetElement.setAttribute(Platform.AttributeNamesVO.ON_CLICK, this.CreateInteractionReporterString());
@@ -250,12 +251,8 @@ var Platform;
     var ClosingCrossComponent = (function (_super) {
         __extends(ClosingCrossComponent, _super);
         function ClosingCrossComponent() {
-            _super.call(this, "fa fa-times");
+            _super.call(this, document.createElement("i"), "fa fa-times");
         }
-        ClosingCrossComponent.prototype.Initialise = function () {
-            this.targetElement = document.createElement("i");
-            _super.prototype.Initialise.call(this);
-        };
         return ClosingCrossComponent;
     }(Platform.PlatformComponent));
     Platform.ClosingCrossComponent = ClosingCrossComponent;
@@ -272,24 +269,26 @@ var Platform;
     var CookieBannerComponent = (function (_super) {
         __extends(CookieBannerComponent, _super);
         function CookieBannerComponent() {
-            _super.call(this, BannerData.CLASS);
+            _super.call(this, document.createElement(Platform.TagNames.DIV), BannerData.CLASS);
             this.bannerId = BannerData.ID;
         }
+        CookieBannerComponent.prototype.InitialiseParagraph = function (linkToPolicy, bannerCloseButton) {
+            this.bannerParagraph = document.createElement(Platform.TagNames.P);
+            this.bannerParagraph.textContent = BannerData.BANNER_CONTENT;
+            this.bannerParagraph.appendChild(linkToPolicy.GetTargetElement());
+            this.bannerParagraph.appendChild(bannerCloseButton.GetTargetElement());
+        };
         CookieBannerComponent.prototype.Initialise = function () {
-            this.targetElement = document.createElement(Platform.TagNames.DIV);
             this.targetElement.setAttribute(Platform.AttributeNamesVO.ID, this.bannerId);
-            var bannerCloseButton = new Platform.InteractionReporterAnchorElement(Platform.InteractionVO.REMOVE_COOKIE_BANNER, BannerData.CLOSE_BUTTON_CLASS_NAME);
+            var bannerCloseButton = new Platform.InteractionReporterAnchorElement(document.createElement(Platform.TagNames.ANCHOR), Platform.InteractionVO.REMOVE_COOKIE_BANNER, BannerData.CLOSE_BUTTON_CLASS_NAME);
             bannerCloseButton.Initialise();
             var cross = new Platform.ClosingCrossComponent();
             cross.Initialise();
             bannerCloseButton.SetContent(cross);
             var linkToPolicy = new Platform.LinkToModalAnchorElement(Platform.ModalIdsVO.COOKIES_POLICY, BannerData.ANCHOR_CLASS_NAME);
             linkToPolicy.Initialise();
-            var bannerParagraph = document.createElement(Platform.TagNames.P);
-            bannerParagraph.textContent = BannerData.BANNER_CONTENT;
-            bannerParagraph.appendChild(linkToPolicy.GetTargetElement());
-            bannerParagraph.appendChild(bannerCloseButton.GetTargetElement());
-            this.targetElement.appendChild(bannerParagraph);
+            this.InitialiseParagraph(linkToPolicy, bannerCloseButton);
+            this.targetElement.appendChild(this.bannerParagraph);
             _super.prototype.Initialise.call(this);
         };
         return CookieBannerComponent;
@@ -300,18 +299,59 @@ var Platform;
 (function (Platform) {
     var NavBarComponent = (function (_super) {
         __extends(NavBarComponent, _super);
-        function NavBarComponent() {
-            _super.call(this, "");
+        function NavBarComponent(target) {
+            _super.call(this, target);
             this.template = new Platform.NavBarTemplate();
         }
-        NavBarComponent.prototype.Initialise = function () {
-            this.targetElement = document.getElementsByClassName(Platform.ApplicationPlatformClassNames.NAV_BAR)[0];
+        NavBarComponent.prototype.InitialiseFromTemplate = function () {
             this.targetElement.innerHTML = this.template.getHTMLTemplate();
+        };
+        NavBarComponent.prototype.InitialiseHeader = function () {
+            var navBarHeaderComponent = this.targetElement.getElementsByClassName(Platform.NavBarClsVO.NAVBAR_HEADER)[0];
+            this.navBarHeader = new Platform.NavBarHeaderComponent(navBarHeaderComponent);
+            this.navBarHeader.Initialise();
+        };
+        NavBarComponent.prototype.InitialiseCollapsiblePart = function () {
+            var navBarHeaderCollapsible = this.targetElement.getElementsByClassName(Platform.NavBarClsVO.NAVBAR_COLLAPSE)[0];
+        };
+        NavBarComponent.prototype.Initialise = function () {
+            this.InitialiseFromTemplate();
+            this.InitialiseHeader();
+            this.InitialiseCollapsiblePart();
             _super.prototype.Initialise.call(this);
         };
         return NavBarComponent;
     }(Platform.PlatformComponent));
     Platform.NavBarComponent = NavBarComponent;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
+    var NavBarHeaderComponent = (function (_super) {
+        __extends(NavBarHeaderComponent, _super);
+        function NavBarHeaderComponent(target) {
+            _super.call(this, target);
+            this.template = new Platform.BurgerMenuTemplate();
+        }
+        NavBarHeaderComponent.prototype.InitialiseFromTemplate = function () {
+            this.button = document.createElement(Platform.TagNames.BUTTON);
+            this.button.classList.add('navbar-toggle');
+            this.button.setAttribute(Platform.AttributeNamesVO.TYPE, 'button');
+            this.button.setAttribute(Platform.AttributeNamesVO.DATA_TOGGLE, 'collapse');
+            this.button.setAttribute(Platform.AttributeNamesVO.DATA_TARGET, '#bs-example-navbar-collapse-1');
+            this.button.innerHTML = this.template.getHTMLTemplate();
+        };
+        NavBarHeaderComponent.prototype.Initialise = function () {
+            _super.prototype.Initialise.call(this);
+            var anchor = new Platform.LinkToPageTargetAnchorElement('page-top', "Rosario Crisci", 'navbar-brand');
+            anchor.Initialise();
+            this.linkToTopPage = anchor.GetTargetElement();
+            this.InitialiseFromTemplate();
+            this.targetElement.appendChild(this.button);
+            this.targetElement.appendChild(this.linkToTopPage);
+        };
+        return NavBarHeaderComponent;
+    }(Platform.PlatformComponent));
+    Platform.NavBarHeaderComponent = NavBarHeaderComponent;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
@@ -357,6 +397,31 @@ var Platform;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
+    var NavBarClsVO = (function () {
+        function NavBarClsVO() {
+        }
+        Object.defineProperty(NavBarClsVO, "NAVBAR_HEADER", {
+            get: function () { return "navbar-header"; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(NavBarClsVO, "NAV_BAR", {
+            get: function () { return "navbar"; },
+            enumerable: true,
+            configurable: true
+        });
+        ;
+        Object.defineProperty(NavBarClsVO, "NAVBAR_COLLAPSE", {
+            get: function () { return "navbar-collapse"; },
+            enumerable: true,
+            configurable: true
+        });
+        return NavBarClsVO;
+    }());
+    Platform.NavBarClsVO = NavBarClsVO;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
     var AttributeNamesVO = (function () {
         function AttributeNamesVO() {
         }
@@ -395,13 +460,23 @@ var Platform;
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(AttributeNamesVO, "DATATOGGLE", {
+        Object.defineProperty(AttributeNamesVO, "DATA_TOGGLE", {
             get: function () { return "data-toggle"; },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(AttributeNamesVO, "ON_CLICK", {
             get: function () { return "onclick"; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(AttributeNamesVO, "TYPE", {
+            get: function () { return "type"; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(AttributeNamesVO, "DATA_TARGET", {
+            get: function () { return "data-target"; },
             enumerable: true,
             configurable: true
         });
@@ -454,6 +529,11 @@ var Platform;
             enumerable: true,
             configurable: true
         });
+        Object.defineProperty(TagNames, "BUTTON", {
+            get: function () { return "button"; },
+            enumerable: true,
+            configurable: true
+        });
         return TagNames;
     }());
     Platform.TagNames = TagNames;
@@ -463,12 +543,6 @@ var Platform;
     var ApplicationPlatformClassNames = (function () {
         function ApplicationPlatformClassNames() {
         }
-        Object.defineProperty(ApplicationPlatformClassNames, "NAV_BAR", {
-            get: function () { return "navbar"; },
-            enumerable: true,
-            configurable: true
-        });
-        ;
         Object.defineProperty(ApplicationPlatformClassNames, "DISPLAY_NONE", {
             get: function () { return "displayNone"; },
             enumerable: true,
@@ -480,21 +554,29 @@ var Platform;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
+    var BurgerMenuTemplate = (function () {
+        function BurgerMenuTemplate() {
+        }
+        BurgerMenuTemplate.prototype.getHTMLTemplate = function () {
+            return "<span class='sr-only'> Toggle navigation</span>" +
+                "<span class='icon-bar'> </span>" +
+                "<span class='icon-bar'> </span>" +
+                "<span class='icon-bar'> </span>";
+        };
+        return BurgerMenuTemplate;
+    }());
+    Platform.BurgerMenuTemplate = BurgerMenuTemplate;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
     var NavBarTemplate = (function () {
         function NavBarTemplate() {
         }
         NavBarTemplate.prototype.getHTMLTemplate = function () {
             return "<div class= 'container'>" +
                 "<div class='navbar-header page-scroll'>" +
-                "<button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1'>" +
-                "<span class='sr-only'> Toggle navigation</span>" +
-                "<span class='icon-bar'> </span>" +
-                "<span class='icon-bar'> </span>" +
-                "<span class='icon-bar'> </span>" +
-                "</button>" +
-                "<a class='navbar-brand' href= '#page-top'> Rosario Crisci</a>" +
                 "</div>" +
-                "<div class='collapse navbar-collapse' id= 'bs-example-navbar-collapse-1'>" +
+                "<div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>" +
                 "<ul class='nav navbar-nav navbar-right'>" +
                 "<li class='hidden'>" +
                 "<a href='#page-top'> </a>" +
@@ -543,7 +625,7 @@ var Platform;
         function ApplicationPresenter(data) {
             _super.call(this, data);
             this.headerComponent = new Platform.HeaderComponent(this.GetData());
-            this.navBar = new Platform.NavBarComponent();
+            this.navBar = new Platform.NavBarComponent(document.getElementsByClassName(Platform.NavBarClsVO.NAV_BAR)[0]);
             this.cookieBanner = new Platform.CookieBannerComponent();
             Platform.InteractionManager.AddToInteractionMap(Platform.InteractionVO.REMOVE_COOKIE_BANNER, this.RemoveCookieBannerHandler, this);
         }
@@ -561,8 +643,8 @@ var Platform;
             this.SetLangOnHtmlTag();
             this.headerComponent.Initialise();
             this.navBar.Initialise();
+            this.navBar.GetTargetElement().appendChild(this.cookieBanner.GetTargetElement());
             this.cookieBanner.Initialise();
-            this.navBar.AppendChild(this.cookieBanner);
         };
         return ApplicationPresenter;
     }(Platform.AbstractApplicationPresenter));

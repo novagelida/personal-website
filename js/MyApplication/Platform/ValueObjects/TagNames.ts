@@ -9,5 +9,6 @@ namespace Platform
 		static get ANCHOR(): string { return "a"; }
 		static get P(): string { return "p"; }
 		static get NAV(): string { return "nav";}
+		static get BUTTON(): string { return "button";}
 	}
 }

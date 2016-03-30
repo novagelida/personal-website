@@ -13,9 +13,11 @@ namespace Platform{
 		protected targetElement: Element;
 		protected classNames: string[];
 
-		constructor(classNames: string){
+		constructor(target: Element, classNames: string = "") {
 			if (classNames != "")
 				this.classNames = classNames.split(" ");
+
+			this.targetElement = target;
 		}
 
 		GetTargetElement() : Element{

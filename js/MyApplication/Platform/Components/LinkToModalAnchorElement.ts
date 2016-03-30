@@ -3,14 +3,14 @@ namespace Platform{
 		private content: string;
 		private pageTarget: string;
 
-		constructor(pageTarget: string, content: string) {
-			super("");
+		constructor(pageTarget: string, content: string, className: string = "") {
+			super(document.createElement(TagNames.ANCHOR));
 			this.content = content;
 			this.pageTarget = pageTarget;
+			this.targetElement.className = className;
 		}
 
 		Initialise(){
-			this.targetElement = document.createElement(TagNames.ANCHOR);
 			this.targetElement.setAttribute(AttributeNamesVO.HREF, "#" + this.pageTarget);
 			this.targetElement.textContent = this.content;
 		}
@@ -24,7 +24,7 @@ namespace Platform{
 
 		Initialise(){
 			super.Initialise();
-			this.targetElement.setAttribute(AttributeNamesVO.DATATOGGLE, "modal");
+			this.targetElement.setAttribute(AttributeNamesVO.DATA_TOGGLE, "modal");
 		}
 	}
 }

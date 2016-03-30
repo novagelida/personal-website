@@ -10,16 +10,23 @@ namespace Platform {
 
 	export class CookieBannerComponent extends PlatformComponent {
 		private bannerId: string = BannerData.ID;
+		private bannerParagraph: Element;
 
 		constructor() {
-			super(BannerData.CLASS);
+			super(document.createElement(TagNames.DIV), BannerData.CLASS);
+		}
+
+		private InitialiseParagraph(linkToPolicy: LinkToModalAnchorElement, bannerCloseButton: InteractionReporterAnchorElement) {
+			this.bannerParagraph = document.createElement(TagNames.P);
+			this.bannerParagraph.textContent = BannerData.BANNER_CONTENT;
+			this.bannerParagraph.appendChild(linkToPolicy.GetTargetElement());
+			this.bannerParagraph.appendChild(bannerCloseButton.GetTargetElement());
 		}
 
 		Initialise() {
-			this.targetElement = document.createElement(TagNames.DIV);
 			this.targetElement.setAttribute(AttributeNamesVO.ID, this.bannerId);
 
-			var bannerCloseButton = new InteractionReporterAnchorElement(InteractionVO.REMOVE_COOKIE_BANNER, BannerData.CLOSE_BUTTON_CLASS_NAME);
+			var bannerCloseButton = new InteractionReporterAnchorElement(document.createElement(TagNames.ANCHOR),InteractionVO.REMOVE_COOKIE_BANNER, BannerData.CLOSE_BUTTON_CLASS_NAME);
 			bannerCloseButton.Initialise();
 
 			var cross = new ClosingCrossComponent()
@@ -30,12 +37,9 @@ namespace Platform {
 			var linkToPolicy = new LinkToModalAnchorElement(ModalIdsVO.COOKIES_POLICY, BannerData.ANCHOR_CLASS_NAME);
 			linkToPolicy.Initialise();
 
-			var bannerParagraph = document.createElement(TagNames.P);
-			bannerParagraph.textContent = BannerData.BANNER_CONTENT;
-			bannerParagraph.appendChild(linkToPolicy.GetTargetElement());
-			bannerParagraph.appendChild(bannerCloseButton.GetTargetElement());
+			this.InitialiseParagraph(linkToPolicy, bannerCloseButton);
 
-			this.targetElement.appendChild(bannerParagraph);
+			this.targetElement.appendChild(this.bannerParagraph);
 
 			super.Initialise();
 		}

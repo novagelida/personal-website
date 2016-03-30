@@ -7,15 +7,13 @@ namespace Platform{
 		private data: ApplicationCore.InitialConfigurationModel;
 
 		constructor(data: ApplicationCore.InitialConfigurationModel){
-			super("");
+			super(document.getElementsByTagName(TagNames.HEAD)[0]);
 			this.data = data;
 		}
 
 		Initialise(){
 			this.descriptionMetaTag = CreateMetaTag(AttributeNamesVO.DESCRIPTION, this.data.GetDescription());
 			this.authorMetaTag = CreateMetaTag(AttributeNamesVO.AUTHOR, this.data.GetCredits());
-
-			this.targetElement = document.getElementsByTagName(TagNames.HEAD)[0];
 
 			this.InitialiseTitle();
 		}

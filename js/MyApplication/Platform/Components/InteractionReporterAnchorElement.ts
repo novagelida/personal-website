@@ -3,8 +3,8 @@ namespace Platform{
 		private interactionName: string;
 		private anchorTagContent: any;
 
-		constructor(interactionName: string, className: string){
-			super(className);
+		constructor(target: Element, interactionName: string, className: string){
+			super(target,className);
 			this.interactionName = interactionName;
 		}
 
@@ -18,7 +18,6 @@ namespace Platform{
 		}
 
 		Initialise(){
-			this.targetElement = document.createElement(TagNames.ANCHOR);
 			this.targetElement.className = this.classNames[0];
 			this.targetElement.setAttribute(AttributeNamesVO.HREF, JavascriptVO.JAVASCRIPT_VOID);
 			this.targetElement.setAttribute(AttributeNamesVO.ON_CLICK, this.CreateInteractionReporterString())
