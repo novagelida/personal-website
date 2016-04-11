@@ -10,5 +10,7 @@ namespace Platform
 		static get P(): string { return "p"; }
 		static get NAV(): string { return "nav";}
 		static get BUTTON(): string { return "button";}
+		static get UL(): string { return "ul";}
+		static get LI(): string { return "li";}
 	}
 }

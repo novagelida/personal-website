@@ -297,6 +297,68 @@ var Platform;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
+    var UnorderedListComponent = (function (_super) {
+        __extends(UnorderedListComponent, _super);
+        function UnorderedListComponent(classNames, listElementType) {
+            if (classNames === void 0) { classNames = ""; }
+            _super.call(this, document.createElement(Platform.TagNames.UL), classNames);
+            this.lenght = 0;
+            this.data = [];
+            this.listElementType = listElementType;
+        }
+        Object.defineProperty(UnorderedListComponent.prototype, "Lenght", {
+            get: function () { return this.lenght; },
+            enumerable: true,
+            configurable: true
+        });
+        UnorderedListComponent.prototype.AppendListEntry = function (newEntry) {
+            this.targetElement.appendChild(newEntry.GetTargetElement());
+        };
+        UnorderedListComponent.prototype.CreateListElement = function (data) {
+            var listElement = new this.listElementType(data);
+            listElement.Initialise();
+            return listElement;
+        };
+        UnorderedListComponent.prototype.SetData = function (data) {
+            this.data = data;
+            this.lenght = data.length;
+            for (var i = 0; i < this.lenght; ++i) {
+                this.AppendListEntry(this.CreateListElement(data[i]));
+            }
+        };
+        return UnorderedListComponent;
+    }(Platform.PlatformComponent));
+    Platform.UnorderedListComponent = UnorderedListComponent;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
+    var ListElement = (function (_super) {
+        __extends(ListElement, _super);
+        function ListElement(data, elementBuilder) {
+            _super.call(this, document.createElement(Platform.TagNames.LI), data.ClassName);
+            this.elementBuilder = elementBuilder;
+            this.data = data;
+        }
+        ListElement.prototype.Initialise = function () {
+            _super.prototype.Initialise.call(this);
+            this.content = this.elementBuilder.Build(this.data);
+            this.targetElement.appendChild(this.content.GetTargetElement());
+        };
+        return ListElement;
+    }(Platform.PlatformComponent));
+    Platform.ListElement = ListElement;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
+    var channels = new Array();
+    var channelA = { ClassName: "hidden", HRef: "#page-top", TextContent: "" };
+    var channelB = { ClassName: "page-scroll", HRef: '#portfolio', TextContent: "Portfolio" };
+    var channelC = { ClassName: "page-scroll", HRef: '#about', TextContent: "About" };
+    var channelD = { ClassName: "page-scroll", HRef: '#contact', TextContent: "Contact" };
+    channels.push(channelA);
+    channels.push(channelB);
+    channels.push(channelC);
+    channels.push(channelD);
     var NavBarComponent = (function (_super) {
         __extends(NavBarComponent, _super);
         function NavBarComponent(target) {
@@ -312,13 +374,17 @@ var Platform;
             this.navBarHeader.Initialise();
         };
         NavBarComponent.prototype.InitialiseCollapsiblePart = function () {
-            var navBarHeaderCollapsible = this.targetElement.getElementsByClassName(Platform.NavBarClsVO.NAVBAR_COLLAPSE)[0];
+            var navBarCollapsible = this.targetElement.getElementsByClassName(Platform.NavBarClsVO.NAVBAR_COLLAPSE)[0];
+            this.navBarCollapsible = new Platform.ChannelListComponent();
+            this.navBarCollapsible.SetData(channels);
+            this.navBarCollapsible.Initialise();
+            navBarCollapsible.appendChild(this.navBarCollapsible.GetTargetElement());
         };
         NavBarComponent.prototype.Initialise = function () {
+            _super.prototype.Initialise.call(this);
             this.InitialiseFromTemplate();
             this.InitialiseHeader();
             this.InitialiseCollapsiblePart();
-            _super.prototype.Initialise.call(this);
         };
         return NavBarComponent;
     }(Platform.PlatformComponent));
@@ -352,6 +418,52 @@ var Platform;
         return NavBarHeaderComponent;
     }(Platform.PlatformComponent));
     Platform.NavBarHeaderComponent = NavBarHeaderComponent;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
+    var ChannelListComponent = (function (_super) {
+        __extends(ChannelListComponent, _super);
+        function ChannelListComponent() {
+            _super.call(this, "nav navbar-nav navbar-right", Platform.ChannelListElement);
+        }
+        ChannelListComponent.prototype.Initialise = function () {
+            _super.prototype.Initialise.call(this);
+        };
+        return ChannelListComponent;
+    }(Platform.UnorderedListComponent));
+    Platform.ChannelListComponent = ChannelListComponent;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
+    var AnchorElement = (function (_super) {
+        __extends(AnchorElement, _super);
+        function AnchorElement(href, textContent) {
+            if (textContent === void 0) { textContent = ""; }
+            var anchor = document.createElement(Platform.TagNames.ANCHOR);
+            anchor.setAttribute(Platform.AttributeNamesVO.HREF, href);
+            anchor.textContent = textContent;
+            _super.call(this, anchor);
+        }
+        return AnchorElement;
+    }(Platform.PlatformComponent));
+    var ChannelListElementBuilder = (function () {
+        function ChannelListElementBuilder() {
+        }
+        ChannelListElementBuilder.prototype.Build = function (data) {
+            var element = new AnchorElement(data.HRef, data.TextContent);
+            element.Initialise();
+            return element;
+        };
+        return ChannelListElementBuilder;
+    }());
+    var ChannelListElement = (function (_super) {
+        __extends(ChannelListElement, _super);
+        function ChannelListElement(data) {
+            _super.call(this, data, new ChannelListElementBuilder());
+        }
+        return ChannelListElement;
+    }(Platform.ListElement));
+    Platform.ChannelListElement = ChannelListElement;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
@@ -534,6 +646,16 @@ var Platform;
             enumerable: true,
             configurable: true
         });
+        Object.defineProperty(TagNames, "UL", {
+            get: function () { return "ul"; },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(TagNames, "LI", {
+            get: function () { return "li"; },
+            enumerable: true,
+            configurable: true
+        });
         return TagNames;
     }());
     Platform.TagNames = TagNames;
@@ -577,20 +699,6 @@ var Platform;
                 "<div class='navbar-header page-scroll'>" +
                 "</div>" +
                 "<div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>" +
-                "<ul class='nav navbar-nav navbar-right'>" +
-                "<li class='hidden'>" +
-                "<a href='#page-top'> </a>" +
-                "</li>" +
-                "<li class='page-scroll'>" +
-                "<a href='#portfolio'> Portfolio </a>" +
-                "</li>" +
-                "<li class='page-scroll'>" +
-                "<a href='#about' > About </a>" +
-                "</li>" +
-                "<li class='page-scroll'>" +
-                "<a href='#contact'> Contact </a>" +
-                "</li>" +
-                "</ul>" +
                 "</div>" +
                 "</div>";
         };

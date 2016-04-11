@@ -4,6 +4,38 @@
 		"selected_items":
 		[
 			[
+				"channel",
+				"channelA	var"
+			],
+			[
+				"na",
+				"navBarCollapsible	property"
+			],
+			[
+				"ty",
+				"typeof	keyword"
+			],
+			[
+				"N",
+				"NAVBAR_COLLAPSE	getter"
+			],
+			[
+				"clas",
+				"className	parameter"
+			],
+			[
+				"class",
+				"className	property"
+			],
+			[
+				"Link",
+				"LinkToPageTargetAnchorElement	class"
+			],
+			[
+				"create",
+				"createElement	method"
+			],
+			[
 				"navb",
 				"navBarHeader	property"
 			],
@@ -66,10 +98,6 @@
 			[
 				"Get",
 				"GetTargetElement	method"
-			],
-			[
-				"class",
-				"className	parameter"
 			],
 			[
 				"cla",
@@ -152,20 +180,11 @@
 	"buffers":
 	[
 		{
-			"file": "/E/SitoPersonale/index.html",
+			"file": "Platform/Components/NavBar/NavBarComponent.ts",
 			"settings":
 			{
-				"buffer_size": 53268,
+				"buffer_size": 1431,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Platform/Components/NavBar/NavBarHeaderComponent.ts",
-			"settings":
-			{
-				"buffer_size": 925,
-				"line_ending": "Windows",
-				"name": "namespace Platform{"
 			}
 		}
 	],
@@ -176,10 +195,18 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 101.0,
-		"last_filter": "TodoReview: Project Files",
+		"height": 490.0,
+		"last_filter": "Package Control: ",
 		"selected_items":
 		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"rename",
+				"TypeScript: Rename"
+			],
 			[
 				"TodoReview: Project Files",
 				"TodoReview: Project Files"
@@ -187,10 +214,6 @@
 			[
 				"Package Control: Install Package",
 				"Package Control: Install Package"
-			],
-			[
-				"rename",
-				"TypeScript: Rename"
 			],
 			[
 				"Typescript: Sh",
@@ -225,32 +248,40 @@
 		"/E/SitoPersonale/js/MyApplication",
 		"/E/SitoPersonale/js/MyApplication/Logic",
 		"/E/SitoPersonale/js/MyApplication/Platform",
-		"/E/SitoPersonale/js/MyApplication/Platform/Components",
-		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBar",
-		"/E/SitoPersonale/js/MyApplication/Platform/Templates"
+		"/E/SitoPersonale/js/MyApplication/Platform/Components"
 	],
 	"file_history":
 	[
-		"/E/SitoPersonale/js/MyApplication/tsconfig.json",
-		"/E/SitoPersonale/js/MyApplication/Platform/Components/PlatformComponent.ts",
+		"/C/Users/admin/AppData/Roaming/Sublime Text 3/Packages/TypeScript/tsserver/lib.d.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBar/IListElementModel.ts",
 		"/E/SitoPersonale/js/MyApplication/Platform/Templates/NavBarTemplate.ts",
-		"/E/SitoPersonale/js/MyApplication/Platform/Templates/BurgerMenuTemplate.ts",
-		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBarComponent.ts",
-		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBar/NavBarComponent.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/ListElement.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBar/ChannelListElement.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBar/ChannelListComponent.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/PlatformComponent.ts",
 		"/E/SitoPersonale/js/MyApplication/Platform/ApplicationPresenter.ts",
-		"/E/SitoPersonale/js/MyApplication/Platform/Components/CookieBannerComponent.ts",
-		"/E/SitoPersonale/js/MyApplication/Platform/Components/LinkToModalAnchorElement.ts",
-		"/E/SitoPersonale/js/MyApplication/Platform/ValueObjects/NavBarClsVO.ts",
-		"/E/SitoPersonale/js/MyApplication/Platform/ValueObjects/ApplicationPlatformClassNames.ts",
-		"/C/Users/admin/AppData/Local/Temp/fz3temp-1/index.html",
-		"/E/SitoPersonale/js/MyApplication/Platform/ValueObjects/TagNames.ts",
 		"/E/SitoPersonale/js/MyApplication/Platform/Components/HeaderComponent.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/UnorderedListComponent.ts",
+		"/E/SitoPersonale/js/MyApplication/tsconfig.json",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBar/NavBarComponent.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/ValueObjects/TagNames.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/ValueObjects/NavBarClsVO.ts",
 		"/E/SitoPersonale/js/MyApplication/Platform/Templates/ITemplate.ts",
-		"/E/SitoPersonale/js/MyApplication/Platform/AttributeNames.ts",
-		"/E/SitoPersonale/js/MyApplication/Platform/Components/InteractionReporterAnchorElement.ts",
-		"/E/SitoPersonale/js/MyApplication/Platform/ValueObjects/JavascriptVO.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/CookieBannerComponent.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBar/NavBarHeaderComponent.ts",
+		"/C/Users/admin/Desktop/NavBarComponent.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBarComponent.ts",
 		"/E/SitoPersonale/index.html",
 		"/E/SitoPersonale/js/MyApplication/Platform/Components/ClosingCrossComponent.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/InteractionReporterAnchorElement.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/LinkToModalAnchorElement.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/ValueObjects/AttributeNames.ts",
+		"/E/SitoPersonale/js/MyApplication/myapplication.sublime-project",
+		"/E/SitoPersonale/js/MyApplication/Platform/Templates/BurgerMenuTemplate.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/ValueObjects/ApplicationPlatformClassNames.ts",
+		"/C/Users/admin/AppData/Local/Temp/fz3temp-1/index.html",
+		"/E/SitoPersonale/js/MyApplication/Platform/AttributeNames.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/ValueObjects/JavascriptVO.ts",
 		"/E/SitoPersonale/js/MyApplication/Platform/ModalIdsVO.ts",
 		"/E/SitoPersonale/js/MyApplication/Platform/ThemeManager.ts",
 		"/E/SitoPersonale/js/MyApplication/Platform/InteractionVO.ts",
@@ -271,7 +302,6 @@
 		"/E/SitoPersonale/js/MyApplication/DataRetriever.ts",
 		"/E/SitoPersonale/js/MyApplication/InitialConfigurationModel.ts",
 		"/E/SitoPersonale/js/MyApplication/ThemeManager.js",
-		"/C/Users/admin/AppData/Roaming/Sublime Text 3/Packages/TypeScript/tsserver/lib.d.ts",
 		"/E/SitoPersonale/js/MyApplication/ThemeManager.ts",
 		"/E/SitoPersonale/js/MyApplication/PathManager.ts",
 		"/E/SitoPersonale/built/local/MyApplicationCore.js",
@@ -290,6 +320,7 @@
 		"height": 117.0,
 		"where_history":
 		[
+			"E:\\SitoPersonale\\js\\MyApplication",
 			""
 		]
 	},
@@ -298,6 +329,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ChannelListComponent",
+			"ClosingCrossComponent",
+			"HeaderComponent",
+			"CookieBannerComponent",
 			"InteractionReporterAnchorElement",
 			"InitialiseTitle",
 			"javas",
@@ -324,66 +359,34 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/E/SitoPersonale/index.html",
+					"file": "Platform/Components/NavBar/NavBarComponent.ts",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 53268,
+						"buffer_size": 1431,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1515,
-								1515
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 132.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "Platform/Components/NavBar/NavBarHeaderComponent.ts",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 925,
-						"regions":
-						{
-						},
-						"selection":
-						[
+								786,
+								786
+							],
 							[
-								336,
-								336
+								908,
+								908
 							]
 						],
 						"settings":
 						{
-							"auto_name": "namespace Platform{",
 							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
-							"typescript_plugin_format_options":
-							{
-								"convertTabsToSpaces": false,
-								"indentSize": 4,
-								"tabSize": 4
-							},
+							"translate_tabs_to_spaces": false,
 							"use_tab_stops": false
 						},
 						"translation.x": 0.0,
