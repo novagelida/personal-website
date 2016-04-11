@@ -2,17 +2,11 @@ namespace Platform{
 
 	export interface IChannelElementModel extends IListElementModel, IAnchorElementModel{}
 
-	var channels: Array<IChannelElementModel> = new Array<IChannelElementModel>();
-
-	var channelA: IChannelElementModel = { ClassName: "hidden", HRef: "#page-top", TextContent: "" };
-	var channelB: IChannelElementModel = { ClassName: "page-scroll", HRef: '#portfolio', TextContent: "Portfolio" };
-	var channelC: IChannelElementModel = { ClassName: "page-scroll", HRef: '#about', TextContent: "About" };
-	var channelD: IChannelElementModel = { ClassName: "page-scroll", HRef: '#contact', TextContent: "Contact" };
-
-	channels.push(channelA);
-	channels.push(channelB);
-	channels.push(channelC);
-	channels.push(channelD);
+	var channels = 
+		[{ ClassName: "hidden", HRef: "#page-top", TextContent: "" },
+		{ ClassName: "page-scroll", HRef: '#portfolio', TextContent: "Portfolio" },
+		{ ClassName: "page-scroll", HRef: '#about', TextContent: "About" },
+		{ ClassName: "page-scroll", HRef: '#contact', TextContent: "Contact" }];
 
 	export class NavBarComponent extends PlatformComponent{
 		private template: ITemplate;

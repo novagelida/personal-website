@@ -332,6 +332,21 @@ var Platform;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
+    var AnchorElement = (function (_super) {
+        __extends(AnchorElement, _super);
+        function AnchorElement(href, textContent) {
+            if (textContent === void 0) { textContent = ""; }
+            var anchor = document.createElement(Platform.TagNames.ANCHOR);
+            anchor.setAttribute(Platform.AttributeNamesVO.HREF, href);
+            anchor.textContent = textContent;
+            _super.call(this, anchor);
+        }
+        return AnchorElement;
+    }(Platform.PlatformComponent));
+    Platform.AnchorElement = AnchorElement;
+})(Platform || (Platform = {}));
+var Platform;
+(function (Platform) {
     var ListElement = (function (_super) {
         __extends(ListElement, _super);
         function ListElement(data, elementBuilder) {
@@ -350,15 +365,10 @@ var Platform;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
-    var channels = new Array();
-    var channelA = { ClassName: "hidden", HRef: "#page-top", TextContent: "" };
-    var channelB = { ClassName: "page-scroll", HRef: '#portfolio', TextContent: "Portfolio" };
-    var channelC = { ClassName: "page-scroll", HRef: '#about', TextContent: "About" };
-    var channelD = { ClassName: "page-scroll", HRef: '#contact', TextContent: "Contact" };
-    channels.push(channelA);
-    channels.push(channelB);
-    channels.push(channelC);
-    channels.push(channelD);
+    var channels = [{ ClassName: "hidden", HRef: "#page-top", TextContent: "" },
+        { ClassName: "page-scroll", HRef: '#portfolio', TextContent: "Portfolio" },
+        { ClassName: "page-scroll", HRef: '#about', TextContent: "About" },
+        { ClassName: "page-scroll", HRef: '#contact', TextContent: "Contact" }];
     var NavBarComponent = (function (_super) {
         __extends(NavBarComponent, _super);
         function NavBarComponent(target) {
@@ -435,22 +445,11 @@ var Platform;
 })(Platform || (Platform = {}));
 var Platform;
 (function (Platform) {
-    var AnchorElement = (function (_super) {
-        __extends(AnchorElement, _super);
-        function AnchorElement(href, textContent) {
-            if (textContent === void 0) { textContent = ""; }
-            var anchor = document.createElement(Platform.TagNames.ANCHOR);
-            anchor.setAttribute(Platform.AttributeNamesVO.HREF, href);
-            anchor.textContent = textContent;
-            _super.call(this, anchor);
-        }
-        return AnchorElement;
-    }(Platform.PlatformComponent));
     var ChannelListElementBuilder = (function () {
         function ChannelListElementBuilder() {
         }
         ChannelListElementBuilder.prototype.Build = function (data) {
-            var element = new AnchorElement(data.HRef, data.TextContent);
+            var element = new Platform.AnchorElement(data.HRef, data.TextContent);
             element.Initialise();
             return element;
         };

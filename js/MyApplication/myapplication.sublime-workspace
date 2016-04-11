@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"Chann",
+				"ChannelListElementBuilder	class"
+			],
+			[
+				"ILis",
+				"IListElementModel	interface"
+			],
+			[
+				"IA",
+				"IAnchorElementModel	interface"
+			],
+			[
+				"Ili",
+				"IListElementModel	interface"
+			],
+			[
 				"channel",
 				"channelA	var"
 			],
@@ -183,7 +199,7 @@
 			"file": "Platform/Components/NavBar/NavBarComponent.ts",
 			"settings":
 			{
-				"buffer_size": 1431,
+				"buffer_size": 1582,
 				"line_ending": "Windows"
 			}
 		}
@@ -252,28 +268,30 @@
 	],
 	"file_history":
 	[
-		"/C/Users/admin/AppData/Roaming/Sublime Text 3/Packages/TypeScript/tsserver/lib.d.ts",
-		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBar/IListElementModel.ts",
-		"/E/SitoPersonale/js/MyApplication/Platform/Templates/NavBarTemplate.ts",
+		"/E/SitoPersonale/js/MyApplication/tsconfig.json",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/IListElementBuilder.ts",
 		"/E/SitoPersonale/js/MyApplication/Platform/Components/ListElement.ts",
-		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBar/ChannelListElement.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBar/IListElementModel.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/AnchorElement.ts",
 		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBar/ChannelListComponent.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBar/ChannelListElement.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/UnorderedListComponent.ts",
 		"/E/SitoPersonale/js/MyApplication/Platform/Components/PlatformComponent.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/InteractionReporterAnchorElement.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBar/NavBarHeaderComponent.ts",
+		"/C/Users/admin/AppData/Roaming/Sublime Text 3/Packages/TypeScript/tsserver/lib.d.ts",
+		"/E/SitoPersonale/js/MyApplication/Platform/Templates/NavBarTemplate.ts",
 		"/E/SitoPersonale/js/MyApplication/Platform/ApplicationPresenter.ts",
 		"/E/SitoPersonale/js/MyApplication/Platform/Components/HeaderComponent.ts",
-		"/E/SitoPersonale/js/MyApplication/Platform/Components/UnorderedListComponent.ts",
-		"/E/SitoPersonale/js/MyApplication/tsconfig.json",
 		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBar/NavBarComponent.ts",
 		"/E/SitoPersonale/js/MyApplication/Platform/ValueObjects/TagNames.ts",
 		"/E/SitoPersonale/js/MyApplication/Platform/ValueObjects/NavBarClsVO.ts",
 		"/E/SitoPersonale/js/MyApplication/Platform/Templates/ITemplate.ts",
 		"/E/SitoPersonale/js/MyApplication/Platform/Components/CookieBannerComponent.ts",
-		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBar/NavBarHeaderComponent.ts",
 		"/C/Users/admin/Desktop/NavBarComponent.ts",
 		"/E/SitoPersonale/js/MyApplication/Platform/Components/NavBarComponent.ts",
 		"/E/SitoPersonale/index.html",
 		"/E/SitoPersonale/js/MyApplication/Platform/Components/ClosingCrossComponent.ts",
-		"/E/SitoPersonale/js/MyApplication/Platform/Components/InteractionReporterAnchorElement.ts",
 		"/E/SitoPersonale/js/MyApplication/Platform/Components/LinkToModalAnchorElement.ts",
 		"/E/SitoPersonale/js/MyApplication/Platform/ValueObjects/AttributeNames.ts",
 		"/E/SitoPersonale/js/MyApplication/myapplication.sublime-project",
@@ -313,7 +331,7 @@
 	],
 	"find":
 	{
-		"height": 30.0
+		"height": 43.0
 	},
 	"find_in_files":
 	{
@@ -329,6 +347,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"};\n",
 			"ChannelListComponent",
 			"ClosingCrossComponent",
 			"HeaderComponent",
@@ -368,29 +387,31 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1431,
+						"buffer_size": 1582,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								786,
-								786
-							],
-							[
-								908,
-								908
+								869,
+								869
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
 							"translate_tabs_to_spaces": false,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
 							"use_tab_stops": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 66.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

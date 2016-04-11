@@ -1,4 +1,13 @@
 namespace Platform {
+
+	export interface IListElementModel {
+		ClassName: string;
+	}
+
+	export interface IListElementBuilder {
+		Build(data: IListElementModel): PlatformComponent;
+	}
+
 	export abstract class ListElement extends PlatformComponent {
 		private data: IListElementModel;
 		private content: PlatformComponent;
